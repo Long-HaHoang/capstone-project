@@ -45,20 +45,23 @@ const AppContainer = styled.div`
   border: solid blue;
   height: auto;
   width: 375px;
-  padding: 10px;
+  padding: 0 10px;
 `;
 
 const ShopName = styled.h1`
-  position: absolute;
+  position: sticky;
+  background-color: white;
+  width: 100%;
   top: 10px;
   left: 25px;
+  margin: 0;
 `;
 
 const GallerySection = styled.section`
   display: flex;
   flex-direction: column;
   place-items: center;
-  margin-top: 100px;
+  margin-top: 20px;
 `;
 
 const GalleryList = styled.ul`
