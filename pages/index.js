@@ -31,6 +31,10 @@ export default function HomePage() {
   );
 }
 
+// Not the final styling.
+// That's just the styling for User Story 1
+// Will add more styling to future User Story to simply it.
+// Real styling comes much later
 const AppContainer = styled.div`
   position: relative;
   display: flex;
