@@ -8,7 +8,6 @@ export default function HomePage() {
     <AppContainer>
       <ShopName>Shop Name</ShopName>
       <GallerySection>
-        {/* TODO: refactor component in the next PR */}
         <GalleryList>
           {products.map((product) => {
             return (
@@ -42,9 +41,7 @@ const AppContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  border: solid blue;
-  height: auto;
-  width: 375px;
+  border: solid green;
   padding: 0 10px;
 `;
 
@@ -68,7 +65,6 @@ const GalleryList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex-wrap: wrap;
   list-style: none;
   gap: 10px;
   margin: 0;
@@ -76,8 +72,8 @@ const GalleryList = styled.ul`
 `;
 
 const Card = styled.li`
-  width: 328px;
-  height: 192px;
+  width: 95%;
+  height: 25%;
   border-radius: 16px;
   background-color: lightgray;
   display: grid;
