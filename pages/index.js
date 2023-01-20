@@ -8,7 +8,7 @@ export default function HomePage() {
     <AppContainer>
       <ShopName>Shop Name</ShopName>
       <GallerySection>
-        {/* TODO: refactor component in the next user story */}
+        {/* TODO: refactor component in the next PR */}
         <GalleryList>
           {products.map((product) => {
             return (
