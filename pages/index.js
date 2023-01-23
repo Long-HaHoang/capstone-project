@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
-import Gallery from "@/components/Gallery/Gallery";
+import ShopHeader from "@/components/ShopHeader";
+import Gallery from "@/components/Gallery";
 
 export default function HomePage() {
   return (
     <AppContainer>
-      <StyledHeader>
-        <ShopName>Shop Name</ShopName>
-      </StyledHeader>
-
+      <ShopHeader />
       <Gallery />
     </AppContainer>
   );
@@ -22,18 +20,4 @@ const AppContainer = styled.div`
   align-items: center;
   border: solid green;
   padding: 0 10px;
-`;
-
-const StyledHeader = styled.header`
-  position: sticky;
-  top: 0;
-  left: 0;
-  background-color: white;
-  width: 100%;
-  padding: 10px;
-  border-bottom: solid lightgray;
-`;
-
-const ShopName = styled.h1`
-  margin: 0;
 `;

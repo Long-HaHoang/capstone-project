@@ -10,7 +10,7 @@ import {
   StyedThumbnail,
 } from "@/components/Gallery/Gallery.styles.js";
 
-export default function Gallery() {
+export function Gallery() {
   return (
     <GallerySection>
       <GalleryList>
