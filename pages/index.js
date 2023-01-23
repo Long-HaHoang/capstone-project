@@ -7,7 +7,9 @@ export default function HomePage() {
   return (
     <AppContainer>
       <ShopHeader />
-      <Gallery />
+      <main>
+        <Gallery />
+      </main>
     </AppContainer>
   );
 }
