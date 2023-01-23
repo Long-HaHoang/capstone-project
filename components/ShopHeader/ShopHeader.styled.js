@@ -10,8 +10,8 @@ const StyledHeader = styled.header`
   border-bottom: solid lightgray;
 `;
 
-const ShopName = styled.h1`
+const StyledH1 = styled.h1`
   margin: 0;
 `;
 
-export { StyledHeader, ShopName };
+export { StyledHeader, StyledH1 };

@@ -18,9 +18,12 @@ const GalleryList = styled.ul`
   padding: 0;
 `;
 
-const Card = styled.li`
+const StyledListItem = styled.li`
   width: 95%;
   height: 25%;
+`;
+
+const StyledArticle = styled.article`
   border-radius: 16px;
   background-color: lightgray;
   display: grid;
@@ -31,25 +34,25 @@ const Card = styled.li`
   gap: 10px;
 `;
 
-const ItemInformation = styled.div`
+const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
-const ItemName = styled.h2`
+const StyledH2 = styled.h2`
   font-size: 16px;
   font-weight: bold;
   text-align: center;
 `;
 
-const ItemPrice = styled.h3`
+const StyledParagraph = styled.p`
   font-size: 14px;
   font-weight: 500;
 `;
 
-const StyedThumbnail = styled(Image)`
+const StyledThumbnail = styled(Image)`
   border-radius: 8px;
   object-fit: cover;
 `;
@@ -57,9 +60,10 @@ const StyedThumbnail = styled(Image)`
 export {
   GallerySection,
   GalleryList,
-  Card,
-  ItemInformation,
-  ItemName,
-  ItemPrice,
-  StyedThumbnail,
+  StyledListItem,
+  StyledArticle,
+  StyledDiv,
+  StyledH2,
+  StyledParagraph,
+  StyledThumbnail,
 };

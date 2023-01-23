@@ -1,12 +1,12 @@
 import {
   StyledHeader,
-  ShopName,
+  StyledH1,
 } from "@/components/ShopHeader/ShopHeader.styled";
 
 export function ShopHeader() {
   return (
     <StyledHeader>
-      <ShopName>Shop Name</ShopName>
+      <StyledH1>Shop Name</StyledH1>
     </StyledHeader>
   );
 }
