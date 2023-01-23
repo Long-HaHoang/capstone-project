@@ -5,7 +5,10 @@ import Gallery from "@/components/Gallery/Gallery";
 export default function HomePage() {
   return (
     <AppContainer>
-      <ShopName>Shop Name</ShopName>
+      <StyledHeader>
+        <ShopName>Shop Name</ShopName>
+      </StyledHeader>
+
       <Gallery />
     </AppContainer>
   );
@@ -21,11 +24,16 @@ const AppContainer = styled.div`
   padding: 0 10px;
 `;
 
-const ShopName = styled.h1`
+const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   left: 0;
   background-color: white;
   width: 100%;
+  padding: 10px;
+  border-bottom: solid lightgray;
+`;
+
+const ShopName = styled.h1`
   margin: 0;
 `;
