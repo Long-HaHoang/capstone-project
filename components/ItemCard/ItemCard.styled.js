@@ -42,15 +42,6 @@ const StyledThumbnail = styled(Image)`
   object-fit: cover;
 `;
 
-const WrapperDiv = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 25px;
-`;
-
 const StyledForm = styled.form`
   padding: 10px;
   border-radius: 8px;
@@ -77,11 +68,6 @@ const StyledButton = styled.button`
   align-items: center;
 `;
 
-const StyledSVG = styled.svg`
-  height: 1.2rem;
-  aspect-ratio: 1;
-`;
-
 export {
   StyledListItem,
   StyledArticle,
@@ -89,9 +75,7 @@ export {
   StyledH2,
   StyledParagraph,
   StyledThumbnail,
-  WrapperDiv,
   StyledForm,
   StyledInput,
   StyledButton,
-  StyledSVG,
 };
