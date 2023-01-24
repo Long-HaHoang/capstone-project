@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Image from "next/image";
 
 const GallerySection = styled.section`
   display: flex;

@@ -9,6 +9,7 @@ export default function HomePage() {
       <ShopHeader />
       <main>
         <Gallery />
+        <p>&copy; 2023 by long ha hoang</p>
       </main>
     </AppContainer>
   );

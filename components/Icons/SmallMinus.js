@@ -1,6 +1,6 @@
 import { StyledButtonSVG } from "./Icons.styled";
 
-export function SmallMinusIcon() {
+export function SmallMinus() {
   return (
     <StyledButtonSVG
       xmlns="http://www.w3.org/2000/svg"

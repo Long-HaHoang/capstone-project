@@ -6,19 +6,16 @@ import products from "@/products.json";
 import ItemCard from "../ItemCard";
 
 // Import styles
-import {
-  GallerySection,
-  GalleryList,
-} from "@/components/Gallery/Gallery.styles.js";
+import * as Styled from "@/components/Gallery/Gallery.styles.js";
 
 export function Gallery() {
   return (
-    <GallerySection>
-      <GalleryList>
+    <Styled.GallerySection>
+      <Styled.GalleryList>
         {products.map((product) => {
           return <ItemCard key={product.id} product={product} />;
         })}
-      </GalleryList>
-    </GallerySection>
+      </Styled.GalleryList>
+    </Styled.GallerySection>
   );
 }
