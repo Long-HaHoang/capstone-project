@@ -16,7 +16,7 @@ export function Gallery() {
     <GallerySection>
       <GalleryList>
         {products.map((product) => {
-          return <ItemCard key={product.id} />;
+          return <ItemCard key={product.id} product={product} />;
         })}
       </GalleryList>
     </GallerySection>

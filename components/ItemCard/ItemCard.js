@@ -12,7 +12,7 @@ import {
   StyledSVG,
 } from "@/components/ItemCard/ItemCard.styled.js";
 
-export function ItemCard() {
+export function ItemCard({ product }) {
   return (
     <StyledListItem>
       <StyledArticle>
