@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 //temporary style
 
 const StyledListItem = styled.li`
