@@ -8,7 +8,7 @@ import ItemCard from "../ItemCard";
 // Import styles
 import * as Styled from "@/components/Gallery/Gallery.styles.js";
 
-export default function Gallery({ handleCartTotal }) {
+export default function Gallery({ onhandleCartTotal }) {
   return (
     <Styled.GallerySection>
       <Styled.GalleryList>
@@ -17,7 +17,7 @@ export default function Gallery({ handleCartTotal }) {
             <ItemCard
               key={product.id}
               product={product}
-              handleCartTotal={handleCartTotal}
+              onhandleCartTotal={onhandleCartTotal}
             />
           );
         })}
