@@ -1,14 +1,17 @@
 import styled from "styled-components";
+import { useState } from "react";
 
 import ShopHeader from "@/components/ShopHeader";
 import Gallery from "@/components/Gallery";
 
 export default function HomePage() {
+  const [cartTotal, setCartTotal] = useState(0);
+
   return (
     <AppContainer>
-      <ShopHeader />
+      <ShopHeader cartTotal={cartTotal} />
       <main>
-        <Gallery />
+        <Gallery setCartTotal={setCartTotal} cartTotal={cartTotal} />
         <p>&copy; 2023 by long ha hoang</p>
       </main>
     </AppContainer>
