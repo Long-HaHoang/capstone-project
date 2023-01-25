@@ -7,11 +7,15 @@ import Gallery from "@/components/Gallery";
 export default function HomePage() {
   const [cartTotal, setCartTotal] = useState(0);
 
+  function handleCartTotal(counter) {
+    setCartTotal(cartTotal + counter);
+  }
+
   return (
     <AppContainer>
       <ShopHeader cartTotal={cartTotal} />
       <main>
-        <Gallery setCartTotal={setCartTotal} cartTotal={cartTotal} />
+        <Gallery handleCartTotal={handleCartTotal} />
         <p>&copy; 2023 by long ha hoang</p>
       </main>
     </AppContainer>
