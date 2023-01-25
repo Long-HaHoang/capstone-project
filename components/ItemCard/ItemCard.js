@@ -8,7 +8,7 @@ import * as Styled from "@/components/ItemCard/ItemCard.styled.js";
 // Import of SVG Icon Components
 import * as Icon from "@/components/Icons";
 
-export function ItemCard({ product, setCartTotal, cartTotal }) {
+export function ItemCard({ product, handleCartTotal }) {
   const [counter, setCounter] = useState(0);
 
   function increaseCounter(oldCounter) {
@@ -21,10 +21,9 @@ export function ItemCard({ product, setCartTotal, cartTotal }) {
     setCounter(newCounter);
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  function addToCart() {
     if (counter > 0) {
-      setCartTotal(cartTotal + counter);
+      handleCartTotal(counter);
       setCounter(0);
     }
   }
@@ -43,7 +42,7 @@ export function ItemCard({ product, setCartTotal, cartTotal }) {
         <span>
           <h2>{product.title}</h2>
           <p>{product.price}€</p>
-          <form onSubmit={handleSubmit}>
+          <div>
             <span>
               <button type="button" onClick={() => decreaseCounter(counter)}>
                 <Icon.SmallMinus />
@@ -54,11 +53,11 @@ export function ItemCard({ product, setCartTotal, cartTotal }) {
               </button>
             </span>
             <span>
-              <button type="submit">
+              <button type="button" onClick={() => addToCart}>
                 <Icon.SmallCart />
               </button>
             </span>
-          </form>
+          </div>
         </span>
       </Styled.ArticleCard>
     </li>
