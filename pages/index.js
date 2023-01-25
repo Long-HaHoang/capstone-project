@@ -15,7 +15,7 @@ export default function HomePage() {
     <AppContainer>
       <ShopHeader cartTotal={cartTotal} />
       <main>
-        <Gallery handleCartTotal={handleCartTotal} />
+        <Gallery onhandleCartTotal={handleCartTotal} />
         <p>&copy; 2023 by long ha hoang</p>
       </main>
     </AppContainer>
