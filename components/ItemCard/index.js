@@ -8,7 +8,7 @@ import * as Styled from "@/components/ItemCard/ItemCard.styled.js";
 // Import of SVG Icon Components
 import * as Icon from "@/components/Icons";
 
-export default function ItemCard({ product, handleCartTotal }) {
+export default function ItemCard({ product, onhandleCartTotal }) {
   const [counter, setCounter] = useState(0);
 
   function increaseCounter() {
@@ -23,7 +23,7 @@ export default function ItemCard({ product, handleCartTotal }) {
 
   function addToCart() {
     if (counter > 0) {
-      handleCartTotal(counter);
+      onhandleCartTotal(counter);
       setCounter(0);
     }
   }
@@ -44,16 +44,16 @@ export default function ItemCard({ product, handleCartTotal }) {
           <p>{product.price}€</p>
           <div>
             <span>
-              <button type="button" onClick={() => decreaseCounter}>
+              <button type="button" onClick={decreaseCounter}>
                 <Icon.SmallMinus />
               </button>
               <p>{counter}</p>
-              <button type="button" onClick={() => increaseCounter}>
+              <button type="button" onClick={increaseCounter}>
                 <Icon.SmallPlus />
               </button>
             </span>
             <span>
-              <button type="button" onClick={() => addToCart}>
+              <button type="button" onClick={addToCart}>
                 <Icon.SmallCart />
               </button>
             </span>
