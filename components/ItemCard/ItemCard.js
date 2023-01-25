@@ -8,33 +8,25 @@ import * as Styled from "@/components/ItemCard/ItemCard.styled.js";
 // Import of SVG Icon Components
 import * as Icon from "@/components/Icons";
 
-export function ItemCard({ product }) {
-  const [counter, setCounter] = useState("");
+export function ItemCard({ product, setCartTotal, cartTotal }) {
+  const [counter, setCounter] = useState(0);
 
-  function increaseCounter() {
-    console.log("You clicked increasedCounter");
-    const newCounter = counter === 99 ? Number(counter) : Number(counter) + 1;
+  function increaseCounter(oldCounter) {
+    const newCounter = oldCounter === 99 ? oldCounter : oldCounter + 1;
     setCounter(newCounter);
   }
 
-  function decreaseCounter() {
-    console.log("You clicked decreasedCounter");
-    const newCounter =
-      counter === 0 || counter === "" ? counter : Number(counter) - 1;
+  function decreaseCounter(oldCounter) {
+    const newCounter = oldCounter === 0 ? oldCounter : oldCounter - 1;
     setCounter(newCounter);
-  }
-
-  function onChange(event) {
-    const validDigit = new RegExp("^[0-9]{0,1}");
-    if (event.target.value.length <= 2) {
-      setCounter(event.target.value);
-    } else {
-      setCounter("");
-    }
   }
 
   function handleSubmit(event) {
     event.preventDefault();
+    if (counter > 0) {
+      setCartTotal(cartTotal + counter);
+      setCounter(0);
+    }
   }
 
   return (
@@ -53,19 +45,11 @@ export function ItemCard({ product }) {
           <p>{product.price}€</p>
           <form onSubmit={handleSubmit}>
             <span>
-              <button type="button" onClick={() => decreaseCounter()}>
+              <button type="button" onClick={() => decreaseCounter(counter)}>
                 <Icon.SmallMinus />
               </button>
-              <input
-                type="number"
-                min="0"
-                max="99"
-                maxLength="2"
-                placeholder="0"
-                value={counter}
-                onChange={onChange}
-              ></input>
-              <button type="button" onClick={() => increaseCounter()}>
+              <p>{counter}</p>
+              <button type="button" onClick={() => increaseCounter(counter)}>
                 <Icon.SmallPlus />
               </button>
             </span>
