@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledHeader = styled.header`
+const ShopHeader = styled.header`
   position: sticky;
   top: 0;
   left: 0;
@@ -8,10 +8,43 @@ const StyledHeader = styled.header`
   width: 100%;
   padding: 10px;
   border-bottom: solid lightgray;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 `;
 
-const StyledH1 = styled.h1`
+const ShopH1 = styled.h1`
   margin: 0;
+  width: 80%;
 `;
 
-export { StyledHeader, StyledH1 };
+const CartParagraph = styled.p`
+  width: 20%;
+  text-align: right;
+
+  padding-right: 10px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+`;
+
+const CartIndicator = styled.div`
+  height: 1.5em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  font-size: 13px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+export { ShopHeader, ShopH1, CartParagraph, CartIndicator };
