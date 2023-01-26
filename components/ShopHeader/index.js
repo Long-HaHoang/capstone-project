@@ -1,18 +1,15 @@
-import {
-  StyledHeader,
-  StyledH1,
-} from "@/components/ShopHeader/ShopHeader.styled";
+import * as Styled from "@/components/ShopHeader/ShopHeader.styled.js";
 
 import { SmallCart } from "@/components/Icons";
 
 export default function ShopHeader({ cartTotal }) {
   return (
-    <StyledHeader>
-      <StyledH1>Shop Name</StyledH1>
-      <p>
+    <Styled.ShopHeader>
+      <Styled.ShopH1>Shop Name</Styled.ShopH1>
+      <Styled.CartParagraph>
         <SmallCart />
-        <span>{cartTotal}</span>
-      </p>
-    </StyledHeader>
+        <Styled.CartIndicator>{cartTotal}</Styled.CartIndicator>
+      </Styled.CartParagraph>
+    </Styled.ShopHeader>
   );
 }
