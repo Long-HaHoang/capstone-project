@@ -8,7 +8,7 @@ export default function ShopHeader({ cartTotal }) {
       <Styled.ShopH1>Shop Name</Styled.ShopH1>
       <Styled.CartParagraph>
         <SmallCart />
-        <Styled.CartIndicator>{cartTotal}</Styled.CartIndicator>
+        {cartTotal}
       </Styled.CartParagraph>
     </Styled.ShopHeader>
   );

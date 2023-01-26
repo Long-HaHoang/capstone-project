@@ -34,11 +34,12 @@ const CartParagraph = styled.p`
 `;
 
 const CartIndicator = styled.div`
-  height: 1.2rem;
+  height: 1.5em;
   aspect-ratio: 1;
   border-radius: 50%;
   background-color: black;
   color: white;
+  font-size: 13px;
 
   display: flex;
   flex-direction: row;
