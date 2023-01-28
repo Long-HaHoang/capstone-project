@@ -1,5 +1,6 @@
 //Import external resources
 import styled from "styled-components";
+import useSWR from "swr";
 
 //Import internal resources
 import products from "@/products.json";
