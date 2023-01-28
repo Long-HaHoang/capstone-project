@@ -10,7 +10,7 @@ import ItemCard from "../ItemCard";
 import * as Styled from "@/components/Gallery/Gallery.styles.js";
 
 export default function Gallery({ onhandleCartTotal }) {
-  const { data: products, isLoading, error } = useSWR("@/pages/api/products");
+  const { data: products, isLoading, error } = useSWR("/api/products");
 
   if (error) {
     return <p>{error.message}</p>;
