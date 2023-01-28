@@ -12,7 +12,11 @@ export default function Gallery({ onhandleCartTotal }) {
   const { data: products, isLoading, error } = useSWR("/api/products");
 
   if (error) {
-    return <p>{error.message}</p>;
+    return (
+      <li>
+        <h2>{error.message}</h2>
+      </li>
+    );
   }
 
   return (
