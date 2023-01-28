@@ -1,7 +1,10 @@
-export default function handler(request, response) {
+import { getAllProducts } from "@/helpers/db";
+
+export default async function handler(request, response) {
   switch (request.method) {
     case "GET": {
-      response.status(200).json("Hello, there!");
+      const products = await getAllProducts();
+      response.status(200).json(products);
       break;
     }
 
