@@ -3,7 +3,6 @@ import styled from "styled-components";
 import useSWR from "swr";
 
 //Import internal resources
-// import products from "@/products.json";
 import ItemCard from "../ItemCard";
 
 // Import styles
@@ -18,11 +17,11 @@ export default function Gallery({ onhandleCartTotal }) {
 
   return (
     <Styled.GallerySection>
-      {isLoading ? (
-        <li>Is Loading...</li>
-      ) : (
-        <Styled.GalleryList>
-          {products.map((product) => {
+      <Styled.GalleryList>
+        {isLoading ? (
+          <p>Is Loading...</p>
+        ) : (
+          products.map((product) => {
             return (
               <ItemCard
                 key={product.id}
@@ -30,9 +29,9 @@ export default function Gallery({ onhandleCartTotal }) {
                 onhandleCartTotal={onhandleCartTotal}
               />
             );
-          })}
-        </Styled.GalleryList>
-      )}
+          })
+        )}
+      </Styled.GalleryList>
     </Styled.GallerySection>
   );
 }
