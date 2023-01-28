@@ -23,6 +23,8 @@ const productSchema = new Schema(
 const Product = models.Product || model("Product", productSchema);
 
 async function connectDatabase() {
+  // Prepair for mongoose 7
+  mongoose.set("strictQuery", false);
   await mongoose.connect(URI);
 }
 
