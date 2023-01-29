@@ -1,3 +1,4 @@
+// Import of styled component
 import { StyledButtonSVG } from "./Icons.styled";
 
 export function SmallPlus() {

@@ -1,5 +1,6 @@
+// Import of styled components
 import * as Styled from "@/components/ShopHeader/ShopHeader.styled.js";
-
+// Import of SVG Icon Component
 import { SmallCart } from "@/components/Icons";
 
 export default function ShopHeader({ cartTotal }) {
