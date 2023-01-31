@@ -1,3 +1,4 @@
+// Import of external resources
 import styled from "styled-components";
 
 const ShopHeader = styled.header`

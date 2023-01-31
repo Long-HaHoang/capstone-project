@@ -1,4 +1,7 @@
+// Import of external resources
 import styled from "styled-components";
+
+// Import of internal resources
 import Image from "next/image";
 
 //temporary style
