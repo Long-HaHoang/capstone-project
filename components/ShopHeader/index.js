@@ -7,10 +7,6 @@ export default function ShopHeader({ cartTotal }) {
   return (
     <Styled.ShopHeader>
       <Styled.ShopH1>Shop Name</Styled.ShopH1>
-      <Styled.CartParagraph>
-        <SmallCart />
-        {cartTotal}
-      </Styled.CartParagraph>
     </Styled.ShopHeader>
   );
 }

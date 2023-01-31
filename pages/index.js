@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import ShopHeader from "@/components/ShopHeader";
 import Gallery from "@/components/Gallery";
+import ShopFooter from "@/components/ShopFooter";
 
 export default function HomePage() {
   const [cartTotal, setCartTotal] = useState(0);
@@ -13,11 +14,12 @@ export default function HomePage() {
 
   return (
     <AppContainer>
-      <ShopHeader cartTotal={cartTotal} />
+      <ShopHeader />
       <main>
         <Gallery onhandleCartTotal={handleCartTotal} />
         <p>&copy; 2023 by long ha hoang</p>
       </main>
+      <ShopFooter cartTotal={cartTotal} />
     </AppContainer>
   );
 }
