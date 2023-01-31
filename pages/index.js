@@ -15,10 +15,10 @@ export default function HomePage() {
   return (
     <AppContainer>
       <ShopHeader />
-      <main>
+      <StyledMain>
         <Gallery onhandleCartTotal={handleCartTotal} />
         <p>&copy; 2023 by long ha hoang</p>
-      </main>
+      </StyledMain>
       <ShopFooter cartTotal={cartTotal} />
     </AppContainer>
   );
@@ -32,4 +32,8 @@ const AppContainer = styled.div`
   align-items: center;
   border: solid green;
   padding: 0 10px;
+`;
+
+const StyledMain = styled.main`
+  margin-bottom: 11%;
 `;
