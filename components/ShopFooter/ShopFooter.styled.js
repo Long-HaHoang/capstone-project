@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const ShopFooter = styled.footer`
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
 
