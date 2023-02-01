@@ -6,10 +6,21 @@ import GlobalStyle from "@/styles";
 import Head from "next/head";
 
 export default function App({ Component, pageProps }) {
-  const [cartItem, setCartItem] = useImmer([]);
+  const [cartItem, updateCartItem] = useImmer([]);
 
-  function updateCartItem(newCart) {
-    setCartItem(newCart);
+  function handleCartItem(newCartItem) {
+    console.log(newCartItem);
+
+    if (
+      cartItem.find((element) => element.id === newCartItem.id) === undefined
+    ) {
+      updateCartItem([...cartItem, newCartItem]);
+    } else {
+      updateCartItem([newCartItem]);
+      console.log(
+        cartItem.find((element) => element.id === newCartItem.id).amount
+      );
+    }
   }
 
   return (
@@ -30,7 +41,7 @@ export default function App({ Component, pageProps }) {
       </Head>
       <Component
         {...pageProps}
-        onUpdateCartItem={updateCartItem}
+        onHandleCartItem={handleCartItem}
         cartItem={cartItem}
       />
     </SWRConfig>
