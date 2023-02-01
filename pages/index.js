@@ -4,7 +4,7 @@ import { useState } from "react";
 import ShopHeader from "@/components/ShopHeader";
 import Gallery from "@/components/Gallery";
 
-export default function HomePage() {
+export default function HomePage({ onHandleCartItem }) {
   const [cartTotal, setCartTotal] = useState(0);
 
   function handleCartTotal(counter) {
@@ -15,7 +15,10 @@ export default function HomePage() {
     <AppContainer>
       <ShopHeader cartTotal={cartTotal} />
       <StyledMain>
-        <Gallery onhandleCartTotal={handleCartTotal} />
+        <Gallery
+          onHandleCartTotal={handleCartTotal}
+          onHandleCartItem={onHandleCartItem}
+        />
         <p>&copy; 2023 by long ha hoang</p>
       </StyledMain>
     </AppContainer>
