@@ -14,7 +14,7 @@ export default function ShopHeader({ cartTotal }) {
   return (
     <Styled.ShopHeader>
       <Styled.ShopH1>Shop Name</Styled.ShopH1>
-      <StyledLink href={"/CartOverview"}>
+      <StyledLink href={"/ShoppingCart"}>
         <SmallCart />
         <span>{cartTotal}</span>
       </StyledLink>
