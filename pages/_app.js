@@ -9,16 +9,22 @@ export default function App({ Component, pageProps }) {
   const [cartItem, updateCartItem] = useImmer([]);
 
   function handleCartItem(newCartItem) {
-    console.log(newCartItem);
+    console.log({ cartItem, newCartItem });
 
     if (
       cartItem.find((element) => element.id === newCartItem.id) === undefined
     ) {
       updateCartItem([...cartItem, newCartItem]);
+      console.log("Hello, there!");
     } else {
-      updateCartItem([newCartItem]);
-      console.log(
-        cartItem.find((element) => element.id === newCartItem.id).amount
+      updateCartItem(
+        cartItem.map((item) => {
+          if (item.id === newCartItem.id) {
+            return { ...item, amount: item.amount + newCartItem.amount };
+          } else {
+            return { item };
+          }
+        })
       );
     }
   }
