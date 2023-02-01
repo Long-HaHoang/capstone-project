@@ -11,23 +11,33 @@ export default function App({ Component, pageProps }) {
   const [cartItems, updateCartItems] = useImmer([]);
   const [cartTotal, setCartTotal] = useImmer(0);
 
+  /**
+   * Takes a new couter number and sets the cartTotal state with
+   * the sum of the old value and new value
+   * @param {number} counter - The new count number to be added to the total
+   */
   function handleCartTotal(counter) {
     setCartTotal(cartTotal + counter);
   }
 
+  /**
+   * Checks if the object is already added to the shopping cart,
+   * and conditionally adds it to an array or assign a new amount.
+   * @param {Object} newCartItem - A product item object
+   */
   function handleCartItem(newCartItem) {
     const itemIndex = cartItems.findIndex(
       (element) => element.id === newCartItem.id
     );
 
-    const updatedItemAmount =
-      cartItems.find((element) => element.id === newCartItem.id) === undefined
-        ? 12345
-        : Number(cartItems[itemIndex].amount) + Number(newCartItem.amount);
+    const isItemAvaiable =
+      cartItems.find((element) => element.id === newCartItem.id) === undefined;
 
-    if (
-      cartItems.find((element) => element.id === newCartItem.id) === undefined
-    ) {
+    const updatedItemAmount = isItemAvaiable
+      ? 12345
+      : Number(cartItems[itemIndex].amount) + Number(newCartItem.amount);
+
+    if (isItemAvaiable) {
       updateCartItems([...cartItems, newCartItem]);
     } else {
       updateCartItems((draft) => {
