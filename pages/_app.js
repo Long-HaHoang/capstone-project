@@ -1,31 +1,38 @@
-// import external resources
+// Import external resources
 import { SWRConfig } from "swr";
 import { useImmer } from "use-immer";
 
+// Import internal resources
 import GlobalStyle from "@/styles";
 import Head from "next/head";
+import ShopHeader from "@/components/ShopHeader";
 
 export default function App({ Component, pageProps }) {
-  const [cartItem, updateCartItem] = useImmer([]);
+  const [cartItems, updateCartItems] = useImmer([]);
+  const [cartTotal, setCartTotal] = useImmer(0);
+
+  function handleCartTotal(counter) {
+    setCartTotal(cartTotal + counter);
+  }
 
   function handleCartItem(newCartItem) {
-    console.log({ cartItem, newCartItem });
+    const itemIndex = cartItems.findIndex(
+      (element) => element.id === newCartItem.id
+    );
+
+    const updatedItemAmount =
+      cartItems.find((element) => element.id === newCartItem.id) === undefined
+        ? 12345
+        : Number(cartItems[itemIndex].amount) + Number(newCartItem.amount);
 
     if (
-      cartItem.find((element) => element.id === newCartItem.id) === undefined
+      cartItems.find((element) => element.id === newCartItem.id) === undefined
     ) {
-      updateCartItem([...cartItem, newCartItem]);
-      console.log("Hello, there!");
+      updateCartItems([...cartItems, newCartItem]);
     } else {
-      updateCartItem(
-        cartItem.map((item) => {
-          if (item.id === newCartItem.id) {
-            return { ...item, amount: item.amount + newCartItem.amount };
-          } else {
-            return { item };
-          }
-        })
-      );
+      updateCartItems((draft) => {
+        draft[itemIndex].amount = updatedItemAmount;
+      });
     }
   }
 
@@ -45,10 +52,13 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Capstone Project</title>
       </Head>
+      <ShopHeader cartTotal={cartTotal} />
       <Component
         {...pageProps}
         onHandleCartItem={handleCartItem}
-        cartItem={cartItem}
+        handleCartTotal={handleCartTotal}
+        cartItems={cartItems}
+        cartTotal={cartTotal}
       />
     </SWRConfig>
   );
