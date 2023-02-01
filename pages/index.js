@@ -16,8 +16,10 @@ export default function HomePage({
           onHandleCartTotal={handleCartTotal}
           onHandleCartItem={onHandleCartItem}
         />
-        <p>&copy; 2023 by long ha hoang</p>
       </StyledMain>
+      <footer>
+        <p>&copy; 2023 by long ha hoang</p>
+      </footer>
     </AppContainer>
   );
 }
@@ -30,9 +32,11 @@ const AppContainer = styled.div`
   align-items: center;
   border: solid green;
   padding: 0 10px;
+  gap: 10;
 `;
 
 const StyledMain = styled.main`
   position: relative;
   top: 45px;
+  margin-bottom: 40px;
 `;
