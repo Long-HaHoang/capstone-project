@@ -1,6 +1,7 @@
 // Import external resources and hooks
 import styled from "styled-components";
 import { useState } from "react";
+import { useImmer } from "use-immer";
 
 // Import of styled components
 import * as Styled from "@/components/ItemCard/ItemCard.styled.js";
@@ -8,7 +9,11 @@ import * as Styled from "@/components/ItemCard/ItemCard.styled.js";
 // Import of SVG Icon Components
 import * as Icon from "@/components/Icons";
 
-export default function ItemCard({ product, onhandleCartTotal }) {
+export default function ItemCard({
+  product,
+  onhandleCartTotal,
+  onUpdateCartItem,
+}) {
   const [counter, setCounter] = useState(0);
 
   function increaseCounter() {
