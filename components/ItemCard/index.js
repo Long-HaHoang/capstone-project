@@ -11,8 +11,8 @@ import * as Icon from "@/components/Icons";
 
 export default function ItemCard({
   product,
-  onhandleCartTotal,
-  onUpdateCartItem,
+  onHandleCartTotal,
+  onHandleCartItem,
 }) {
   const [counter, setCounter] = useState(0);
 
@@ -28,7 +28,14 @@ export default function ItemCard({
 
   function addToCart() {
     if (counter > 0) {
-      onhandleCartTotal(counter);
+      onHandleCartItem({
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        thumbnail: product.thumbnail,
+        amount: counter,
+      });
+      onHandleCartTotal(counter);
       setCounter(0);
     }
   }
