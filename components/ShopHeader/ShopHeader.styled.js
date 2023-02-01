@@ -2,17 +2,18 @@
 import styled from "styled-components";
 
 const ShopHeader = styled.header`
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
+  z-index: 3;
   background-color: white;
   width: 100%;
-  padding: 10px;
+  padding: 10px 25px;
   border-bottom: solid lightgray;
 
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
 `;
 

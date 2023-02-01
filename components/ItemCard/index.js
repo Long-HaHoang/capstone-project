@@ -37,28 +37,26 @@ export default function ItemCard({ product, onhandleCartTotal }) {
             alt="no img"
             width={120}
             height={150}
+            priority
           />
         </span>
-        <span>
-          <h2>{product.title}</h2>
+        <Styled.CardInformationWrapper>
+          <Styled.ProductTitle>{product.title}</Styled.ProductTitle>
           <p>{product.price}€</p>
-          <div>
-            <span>
-              <button type="button" onClick={decreaseCounter}>
-                <Icon.SmallMinus />
-              </button>
-              <p>{counter}</p>
-              <button type="button" onClick={increaseCounter}>
-                <Icon.SmallPlus />
-              </button>
-            </span>
-            <span>
-              <button type="button" onClick={addToCart}>
-                <Icon.SmallCart />
-              </button>
-            </span>
-          </div>
-        </span>
+          <Styled.CounterContainer>
+            <Styled.CounterButton type="button" onClick={decreaseCounter}>
+              <Icon.SmallMinus />
+            </Styled.CounterButton>
+            <p>{counter}</p>
+            <Styled.CounterButton type="button" onClick={increaseCounter}>
+              <Icon.SmallPlus />
+            </Styled.CounterButton>
+
+            <Styled.CartButton type="button" onClick={addToCart}>
+              <Icon.SmallCart />
+            </Styled.CartButton>
+          </Styled.CounterContainer>
+        </Styled.CardInformationWrapper>
       </Styled.ArticleCard>
     </li>
   );

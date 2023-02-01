@@ -3,7 +3,6 @@ import { useState } from "react";
 
 import ShopHeader from "@/components/ShopHeader";
 import Gallery from "@/components/Gallery";
-import ShopFooter from "@/components/ShopFooter";
 
 export default function HomePage() {
   const [cartTotal, setCartTotal] = useState(0);
@@ -14,12 +13,11 @@ export default function HomePage() {
 
   return (
     <AppContainer>
-      <ShopHeader />
+      <ShopHeader cartTotal={cartTotal} />
       <StyledMain>
         <Gallery onhandleCartTotal={handleCartTotal} />
         <p>&copy; 2023 by long ha hoang</p>
       </StyledMain>
-      <ShopFooter cartTotal={cartTotal} />
     </AppContainer>
   );
 }
@@ -35,5 +33,6 @@ const AppContainer = styled.div`
 `;
 
 const StyledMain = styled.main`
-  margin-bottom: 11%;
+  position: relative;
+  top: 45px;
 `;
