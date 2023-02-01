@@ -4,16 +4,13 @@ import { useState } from "react";
 import ShopHeader from "@/components/ShopHeader";
 import Gallery from "@/components/Gallery";
 
-export default function HomePage({ onHandleCartItem }) {
-  const [cartTotal, setCartTotal] = useState(0);
-
-  function handleCartTotal(counter) {
-    setCartTotal(cartTotal + counter);
-  }
-
+export default function HomePage({
+  onHandleCartItem,
+  cartTotal,
+  handleCartTotal,
+}) {
   return (
     <AppContainer>
-      <ShopHeader cartTotal={cartTotal} />
       <StyledMain>
         <Gallery
           onHandleCartTotal={handleCartTotal}
