@@ -3,7 +3,7 @@ import Link from "next/link";
 import CartItemCard from "@/components/CartItemCard";
 
 // Import styled components
-import * as Styled from "@/pages/ShoppingCart/ShoppingCart.styled.js";
+import * as Styled from "@/components/ShoppingCart.styled.js";
 
 export default function ShoppingCartPage({ cartItems }) {
   console.log(cartItems);
