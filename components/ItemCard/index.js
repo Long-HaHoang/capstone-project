@@ -1,7 +1,9 @@
 // Import external resources and hooks
 import styled from "styled-components";
 import { useState } from "react";
-import { useImmer } from "use-immer";
+
+// Import internal resources
+import { formatNumberToDeCurrency } from "@/helpers/formatNumberToCurrency";
 
 // Import of styled components
 import * as Styled from "@/components/ItemCard/ItemCard.styled.js";
@@ -54,7 +56,7 @@ export default function ItemCard({
         </span>
         <Styled.CardInformationWrapper>
           <Styled.ProductTitle>{product.title}</Styled.ProductTitle>
-          <p>{product.price}€</p>
+          <p>{formatNumberToDeCurrency(product.price)}</p>
           <Styled.CounterContainer>
             <Styled.CounterButton type="button" onClick={decreaseCounter}>
               <Icon.SmallMinus />
