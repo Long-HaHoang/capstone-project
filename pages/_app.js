@@ -5,7 +5,6 @@ import { useImmer } from "use-immer";
 // Import internal resources
 import GlobalStyle from "@/styles";
 import Head from "next/head";
-import ShopHeader from "@/components/ShopHeader";
 import Layout from "@/components/Layout";
 
 export default function App({ Component, pageProps }) {
@@ -35,7 +34,7 @@ export default function App({ Component, pageProps }) {
       cartItems.find((element) => element.id === newCartItem.id) === undefined;
 
     const updatedItemAmount = isItemAvaiable
-      ? 12345
+      ? 0
       : Number(cartItems[itemIndex].amount) + Number(newCartItem.amount);
 
     if (isItemAvaiable) {

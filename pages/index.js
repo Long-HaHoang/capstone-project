@@ -1,14 +1,8 @@
 import styled from "styled-components";
-import { useState } from "react";
 
-import ShopHeader from "@/components/ShopHeader";
 import Gallery from "@/components/Gallery";
 
-export default function HomePage({
-  onHandleCartItem,
-  cartTotal,
-  handleCartTotal,
-}) {
+export default function HomePage({ onHandleCartItem, handleCartTotal }) {
   return (
     <>
       <StyledMain>
