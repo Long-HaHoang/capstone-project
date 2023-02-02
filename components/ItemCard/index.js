@@ -25,12 +25,10 @@ export default function ItemCard({ product, onCartItem }) {
   }
 
   function addToCart() {
+    console.log(product);
     if (counter > 0) {
       onCartItem({
-        id: product.id,
-        title: product.title,
-        price: product.price,
-        thumbnail: product.thumbnail,
+        ...product,
         amount: counter,
       });
 
