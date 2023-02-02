@@ -10,8 +10,10 @@ import Layout from "@/components/Layout";
 export default function App({ Component, pageProps }) {
   const [cartItems, updateCartItems] = useImmer([]);
 
+  // Duplication is far cheaper than the wrong abstraction.
+  // Reduces the cartItem array to the get the total amount
+  // of item added to the shopping cart
   const sumUpArray = (accumulator, currentValue) => accumulator + currentValue;
-
   const sumOfAllItemAmount = cartItems
     .map((item) => item.amount)
     .reduce(sumUpArray, 0);
