@@ -5,6 +5,9 @@ import styled from "styled-components";
 import Link from "next/link";
 import CartItemCard from "@/components/CartItemCard";
 
+// Import styled components
+import * as Styled from "@/components/ShoppingCart.styled.js";
+
 // Import helper functions
 import { formatNumberToDeCurrency } from "@/helpers/formatNumberToCurrency";
 
@@ -20,15 +23,15 @@ export default function ShoppingCartPage({ cartItems }) {
     .reduce(sumUpArray, 0);
 
   return (
-    <StyledMainContent>
-      <StyledTopInfoSection>
+    <Styled.MainContent>
+      <Styled.TopInfoSection>
         <Link href={"/"}>back</Link>
         <h2>Shopping Cart</h2>
         <p>Items: {sumOfAllItemAmount}</p>
         <p>Cartvalue: {formatNumberToDeCurrency(sumOfAllItemPrices)}</p>
-      </StyledTopInfoSection>
+      </Styled.TopInfoSection>
 
-      <StyledCartItemList>
+      <Styled.CartItemList>
         {cartItems.length === 0 ? (
           <li>No items added</li>
         ) : (
@@ -40,31 +43,7 @@ export default function ShoppingCartPage({ cartItems }) {
             );
           })
         )}
-      </StyledCartItemList>
-    </StyledMainContent>
+      </Styled.CartItemList>
+    </Styled.MainContent>
   );
 }
-
-const StyledMainContent = styled.main`
-  margin-top: 60px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-`;
-
-const StyledCartItemList = styled.ul`
-  display: flex;
-  flex-direction: column;
-
-  list-style: none;
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-`;
-
-const StyledTopInfoSection = styled.section`
-  border: solid black;
-`;
