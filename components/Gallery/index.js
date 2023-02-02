@@ -8,7 +8,7 @@ import ItemCard from "../ItemCard";
 // Import styles
 import * as Styled from "@/components/Gallery/Gallery.styles.js";
 
-export default function Gallery({ onHandleCartTotal, onHandleCartItem }) {
+export default function Gallery({ onCartItem }) {
   const { data: products, isLoading, error } = useSWR("/api/products");
 
   if (error) {
@@ -26,8 +26,7 @@ export default function Gallery({ onHandleCartTotal, onHandleCartItem }) {
               <ItemCard
                 key={product.id}
                 product={product}
-                onHandleCartTotal={onHandleCartTotal}
-                onHandleCartItem={onHandleCartItem}
+                onCartItem={onCartItem}
               />
             );
           })

@@ -9,8 +9,6 @@ import CartItemCard from "@/components/CartItemCard";
 import { formatNumberToDeCurrency } from "@/helpers/formatNumberToCurrency";
 
 export default function ShoppingCartPage({ cartItems }) {
-  console.log(cartItems);
-
   const sumUpArray = (accumulator, currentValue) => accumulator + currentValue;
 
   const sumOfAllItemPrices = cartItems
@@ -22,27 +20,28 @@ export default function ShoppingCartPage({ cartItems }) {
     .reduce(sumUpArray, 0);
 
   return (
-    <>
-      <StyledMainContent>
-        <StyledTopInfoSection>
-          <Link href={"/"}>back</Link>
-          <h2>Shopping Cart</h2>
-          <p>{`Items: ${sumOfAllItemAmount}`}</p>
-          <p>{`Cartvalue: ${formatNumberToDeCurrency(sumOfAllItemPrices)}`}</p>
-        </StyledTopInfoSection>
-        <section>
-          <StyledCartItemList>
-            {cartItems.length === 0 ? (
-              <li>No items added</li>
-            ) : (
-              cartItems.map((eachItem) => {
-                return <CartItemCard key={eachItem.id} eachItem={eachItem} />;
-              })
-            )}
-          </StyledCartItemList>
-        </section>
-      </StyledMainContent>
-    </>
+    <StyledMainContent>
+      <StyledTopInfoSection>
+        <Link href={"/"}>back</Link>
+        <h2>Shopping Cart</h2>
+        <p>Items: {sumOfAllItemAmount}</p>
+        <p>Cartvalue: {formatNumberToDeCurrency(sumOfAllItemPrices)}</p>
+      </StyledTopInfoSection>
+
+      <StyledCartItemList>
+        {cartItems.length === 0 ? (
+          <li>No items added</li>
+        ) : (
+          cartItems.map((eachItem) => {
+            return (
+              <li key={eachItem.id}>
+                <CartItemCard cartItem={eachItem} />
+              </li>
+            );
+          })
+        )}
+      </StyledCartItemList>
+    </StyledMainContent>
   );
 }
 

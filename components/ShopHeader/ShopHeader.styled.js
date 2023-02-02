@@ -1,5 +1,6 @@
 // Import of external resources
 import styled from "styled-components";
+import Link from "next/link";
 
 const ShopHeader = styled.header`
   position: fixed;
@@ -22,4 +23,12 @@ const ShopH1 = styled.h1`
   width: 80%;
 `;
 
-export { ShopHeader, ShopH1 };
+const ShoppingCartLink = styled(Link)`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+`;
+
+export { ShopHeader, ShopH1, ShoppingCartLink };

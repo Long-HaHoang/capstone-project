@@ -2,16 +2,11 @@ import styled from "styled-components";
 
 import Gallery from "@/components/Gallery";
 
-export default function HomePage({ onHandleCartItem, handleCartTotal }) {
+export default function HomePage({ onCartItem }) {
   return (
-    <>
-      <StyledMain>
-        <Gallery
-          onHandleCartTotal={handleCartTotal}
-          onHandleCartItem={onHandleCartItem}
-        />
-      </StyledMain>
-    </>
+    <StyledMain>
+      <Gallery onCartItem={onCartItem} />
+    </StyledMain>
   );
 }
 

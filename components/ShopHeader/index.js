@@ -14,18 +14,10 @@ export default function ShopHeader({ cartTotal }) {
   return (
     <Styled.ShopHeader>
       <Styled.ShopH1>Shop Name</Styled.ShopH1>
-      <StyledLink href={"/ShoppingCart"}>
+      <Styled.ShoppingCartLink href={"/ShoppingCart"}>
         <SmallCart />
         <span>{cartTotal}</span>
-      </StyledLink>
+      </Styled.ShoppingCartLink>
     </Styled.ShopHeader>
   );
 }
-
-const StyledLink = styled(Link)`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-`;

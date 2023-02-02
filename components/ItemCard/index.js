@@ -11,11 +11,7 @@ import * as Styled from "@/components/ItemCard/ItemCard.styled.js";
 // Import of SVG Icon Components
 import * as Icon from "@/components/Icons";
 
-export default function ItemCard({
-  product,
-  onHandleCartTotal,
-  onHandleCartItem,
-}) {
+export default function ItemCard({ product, onCartItem }) {
   const [counter, setCounter] = useState(0);
 
   function increaseCounter() {
@@ -30,14 +26,14 @@ export default function ItemCard({
 
   function addToCart() {
     if (counter > 0) {
-      onHandleCartItem({
+      onCartItem({
         id: product.id,
         title: product.title,
         price: product.price,
         thumbnail: product.thumbnail,
         amount: counter,
       });
-      onHandleCartTotal(counter);
+
       setCounter(0);
     }
   }

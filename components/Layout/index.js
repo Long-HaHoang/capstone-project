@@ -2,27 +2,16 @@ import styled from "styled-components";
 
 import ShopHeader from "../ShopHeader";
 
+import * as Styled from "@/components/Layout/Layout.styled.js";
+
 export default function Layout({ children, cartTotal }) {
   return (
     <>
       <ShopHeader cartTotal={cartTotal} />
-      <AppContainer>
-        {children}
-        <footer>
-          <p>&copy; 2023 by long ha hoang</p>
-        </footer>
-      </AppContainer>
+      <Styled.AppContainer>{children}</Styled.AppContainer>
+      <footer>
+        <p>&copy; 2023 by long ha hoang</p>
+      </footer>
     </>
   );
 }
-
-const AppContainer = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: solid green;
-  padding: 0 10px;
-  gap: 10;
-`;

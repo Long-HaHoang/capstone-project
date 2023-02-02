@@ -9,16 +9,12 @@ import Layout from "@/components/Layout";
 
 export default function App({ Component, pageProps }) {
   const [cartItems, updateCartItems] = useImmer([]);
-  const [cartTotal, setCartTotal] = useImmer(0);
 
-  /**
-   * Takes a new couter number and sets the cartTotal state with
-   * the sum of the old value and new value
-   * @param {number} counter - The new count number to be added to the total
-   */
-  function handleCartTotal(counter) {
-    setCartTotal(cartTotal + counter);
-  }
+  const sumUpArray = (accumulator, currentValue) => accumulator + currentValue;
+
+  const sumOfAllItemAmount = cartItems
+    .map((item) => item.amount)
+    .reduce(sumUpArray, 0);
 
   /**
    * Checks if the object is already added to the shopping cart,
@@ -62,13 +58,11 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Capstone Project</title>
       </Head>
-      <Layout cartTotal={cartTotal}>
+      <Layout cartTotal={sumOfAllItemAmount}>
         <Component
           {...pageProps}
-          onHandleCartItem={handleCartItem}
-          handleCartTotal={handleCartTotal}
+          onCartItem={handleCartItem}
           cartItems={cartItems}
-          cartTotal={cartTotal}
         />
       </Layout>
     </SWRConfig>
