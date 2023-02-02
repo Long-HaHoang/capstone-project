@@ -6,6 +6,7 @@ import { useImmer } from "use-immer";
 import GlobalStyle from "@/styles";
 import Head from "next/head";
 import ShopHeader from "@/components/ShopHeader";
+import Layout from "@/components/Layout";
 
 export default function App({ Component, pageProps }) {
   const [cartItems, updateCartItems] = useImmer([]);
@@ -62,14 +63,15 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Capstone Project</title>
       </Head>
-      <ShopHeader cartTotal={cartTotal} />
-      <Component
-        {...pageProps}
-        onHandleCartItem={handleCartItem}
-        handleCartTotal={handleCartTotal}
-        cartItems={cartItems}
-        cartTotal={cartTotal}
-      />
+      <Layout cartTotal={cartTotal}>
+        <Component
+          {...pageProps}
+          onHandleCartItem={handleCartItem}
+          handleCartTotal={handleCartTotal}
+          cartItems={cartItems}
+          cartTotal={cartTotal}
+        />
+      </Layout>
     </SWRConfig>
   );
 }

@@ -10,30 +10,16 @@ export default function HomePage({
   handleCartTotal,
 }) {
   return (
-    <AppContainer>
+    <>
       <StyledMain>
         <Gallery
           onHandleCartTotal={handleCartTotal}
           onHandleCartItem={onHandleCartItem}
         />
       </StyledMain>
-      <footer>
-        <p>&copy; 2023 by long ha hoang</p>
-      </footer>
-    </AppContainer>
+    </>
   );
 }
-
-const AppContainer = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  border: solid green;
-  padding: 0 10px;
-  gap: 10;
-`;
 
 const StyledMain = styled.main`
   position: relative;
