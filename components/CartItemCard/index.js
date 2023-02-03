@@ -8,7 +8,7 @@ export default function CartItemCard({ cartItem }) {
     <Styled.CartItemArticle>
       <Styled.Thumbnail
         src={cartItem.thumbnail}
-        alt="no img avaible"
+        alt={cartItem.thumbnail ? "Thumbnail of item" : "no image available"}
         width={100}
         height={100}
       />
