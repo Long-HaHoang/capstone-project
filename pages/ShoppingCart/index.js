@@ -11,7 +11,7 @@ import * as Styled from "@/components/ShoppingCart.styled.js";
 // Import helper functions
 import { formatNumberToDeCurrency } from "@/helpers/formatNumberToCurrency";
 
-export default function ShoppingCartPage({ cartItems }) {
+export default function ShoppingCartPage({ cartItems, onDeleteItem }) {
   const sumUpArray = (accumulator, currentValue) => accumulator + currentValue;
 
   const sumOfAllItemPrices = cartItems
@@ -38,7 +38,7 @@ export default function ShoppingCartPage({ cartItems }) {
           cartItems.map((eachItem) => {
             return (
               <li key={eachItem.id}>
-                <CartItemCard cartItem={eachItem} />
+                <CartItemCard cartItem={eachItem} onDeleteItem={onDeleteItem} />
               </li>
             );
           })
