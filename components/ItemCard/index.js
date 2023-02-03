@@ -2,13 +2,16 @@
 import styled from "styled-components";
 import { useState } from "react";
 
+// Import internal resources
+import { formatNumberToDeCurrency } from "@/helpers/formatNumberToCurrency";
+
 // Import of styled components
 import * as Styled from "@/components/ItemCard/ItemCard.styled.js";
 
 // Import of SVG Icon Components
 import * as Icon from "@/components/Icons";
 
-export default function ItemCard({ product, onhandleCartTotal }) {
+export default function ItemCard({ product, onCartItem }) {
   const [counter, setCounter] = useState(0);
 
   function increaseCounter() {
@@ -22,8 +25,13 @@ export default function ItemCard({ product, onhandleCartTotal }) {
   }
 
   function addToCart() {
+    console.log(product);
     if (counter > 0) {
-      onhandleCartTotal(counter);
+      onCartItem({
+        ...product,
+        amount: counter,
+      });
+
       setCounter(0);
     }
   }
@@ -37,28 +45,26 @@ export default function ItemCard({ product, onhandleCartTotal }) {
             alt="no img"
             width={120}
             height={150}
+            priority
           />
         </span>
-        <span>
-          <h2>{product.title}</h2>
-          <p>{product.price}€</p>
-          <div>
-            <span>
-              <button type="button" onClick={decreaseCounter}>
-                <Icon.SmallMinus />
-              </button>
-              <p>{counter}</p>
-              <button type="button" onClick={increaseCounter}>
-                <Icon.SmallPlus />
-              </button>
-            </span>
-            <span>
-              <button type="button" onClick={addToCart}>
-                <Icon.SmallCart />
-              </button>
-            </span>
-          </div>
-        </span>
+        <Styled.CardInformationWrapper>
+          <Styled.ProductTitle>{product.title}</Styled.ProductTitle>
+          <p>{formatNumberToDeCurrency(product.price)}</p>
+          <Styled.CounterContainer>
+            <Styled.CounterButton type="button" onClick={decreaseCounter}>
+              <Icon.SmallMinus />
+            </Styled.CounterButton>
+            <p>{counter}</p>
+            <Styled.CounterButton type="button" onClick={increaseCounter}>
+              <Icon.SmallPlus />
+            </Styled.CounterButton>
+
+            <Styled.CartButton type="button" onClick={addToCart}>
+              <Icon.SmallCart />
+            </Styled.CartButton>
+          </Styled.CounterContainer>
+        </Styled.CardInformationWrapper>
       </Styled.ArticleCard>
     </li>
   );

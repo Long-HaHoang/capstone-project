@@ -1,18 +1,20 @@
 // Import of external resources
 import styled from "styled-components";
+import Link from "next/link";
 
 const ShopHeader = styled.header`
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
+  z-index: 3;
   background-color: white;
   width: 100%;
-  padding: 10px;
+  padding: 10px 25px;
   border-bottom: solid lightgray;
 
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 `;
 
@@ -21,31 +23,12 @@ const ShopH1 = styled.h1`
   width: 80%;
 `;
 
-const CartParagraph = styled.p`
-  width: 20%;
-  text-align: right;
-
-  padding-right: 10px;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 10px;
-`;
-
-const CartIndicator = styled.div`
-  height: 1.5em;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background-color: black;
-  color: white;
-  font-size: 13px;
-
+const ShoppingCartLink = styled(Link)`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
 `;
 
-export { ShopHeader, ShopH1, CartParagraph, CartIndicator };
+export { ShopHeader, ShopH1, ShoppingCartLink };

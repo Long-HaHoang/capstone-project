@@ -1,33 +1,17 @@
 import styled from "styled-components";
-import { useState } from "react";
 
-import ShopHeader from "@/components/ShopHeader";
 import Gallery from "@/components/Gallery";
 
-export default function HomePage() {
-  const [cartTotal, setCartTotal] = useState(0);
-
-  function handleCartTotal(counter) {
-    setCartTotal(cartTotal + counter);
-  }
-
+export default function HomePage({ onCartItem }) {
   return (
-    <AppContainer>
-      <ShopHeader cartTotal={cartTotal} />
-      <main>
-        <Gallery onhandleCartTotal={handleCartTotal} />
-        <p>&copy; 2023 by long ha hoang</p>
-      </main>
-    </AppContainer>
+    <StyledMain>
+      <Gallery onCartItem={onCartItem} />
+    </StyledMain>
   );
 }
 
-const AppContainer = styled.div`
+const StyledMain = styled.main`
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  border: solid green;
-  padding: 0 10px;
+  top: 45px;
+  margin-bottom: 40px;
 `;
