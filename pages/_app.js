@@ -44,6 +44,10 @@ export default function App({ Component, pageProps }) {
     }
   }
 
+  function deleteCartItem(deleteItemID) {
+    updateCartItems(cartItems.filter((item) => item.id !== deleteItemID));
+  }
+
   return (
     <SWRConfig
       value={{
@@ -64,6 +68,7 @@ export default function App({ Component, pageProps }) {
         <Component
           {...pageProps}
           onCartItem={handleCartItem}
+          onDeleteItem={deleteCartItem}
           cartItems={cartItems}
         />
       </Layout>
