@@ -25,7 +25,6 @@ export default function ItemCard({ product, onCartItem }) {
   }
 
   function addToCart() {
-    console.log(product);
     if (counter > 0) {
       onCartItem({
         ...product,
