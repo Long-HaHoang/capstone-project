@@ -9,6 +9,7 @@ export const ArticleCard = styled.article`
   border: solid black;
   border-radius: 16px;
 
+  height: fit-content;
   width: 90vw;
 
   display: grid;

@@ -7,12 +7,20 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+  
+
   body {
+    --primary-color: #fcfcfc;
+    --secondary-color: #0c0c0c;
+    
     margin: 0;
-    font-family: system-ui;
+    font-family: Roboto, sans-serif;
     display: flex;
     justify-content: center;
-    border: solid red;
+
+    /* border: solid red; */
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
   }
 
   input[type=number]::-webkit-inner-spin-button,

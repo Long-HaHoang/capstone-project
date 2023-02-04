@@ -5,7 +5,6 @@ const GallerySection = styled.section`
   display: flex;
   flex-direction: column;
   place-items: center;
-  margin-top: 20px;
 `;
 
 const GalleryList = styled.ul`
