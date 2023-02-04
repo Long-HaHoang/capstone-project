@@ -25,11 +25,14 @@ export default function ShoppingCartPage({ cartItems, onDeleteItem }) {
   return (
     <Styled.MainContent>
       <Styled.TopInfoSection>
-        <Link href={"/"}>back</Link>
+        <Styled.CartBackLink href={"/"}>back</Styled.CartBackLink>
         <h2>Shopping Cart</h2>
-        <p>Items: {sumOfAllItemAmount}</p>
-        <p>Cartvalue: {formatNumberToDeCurrency(sumOfAllItemPrices)}</p>
+        <Styled.CartContentMetric>
+          <p>Items: {sumOfAllItemAmount}</p>
+          <p>Cartvalue: {formatNumberToDeCurrency(sumOfAllItemPrices)}</p>
+        </Styled.CartContentMetric>
       </Styled.TopInfoSection>
+      <Styled.CartHR />
       <Styled.CartItemList>
         {cartItems.length === 0 ? (
           <li>No items added</li>
