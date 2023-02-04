@@ -8,8 +8,6 @@ const ContentContainer = styled.div`
   justify-content: center;
   align-items: center;
   border: solid green;
-  padding: 0 10px;
-  gap: 10;
 `;
 
 const Footer = styled.div`
