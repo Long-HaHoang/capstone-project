@@ -8,6 +8,7 @@ const ContentContainer = styled.div`
   justify-content: center;
   align-items: center;
   border: solid green;
+  padding: 20px 0;
 `;
 
 const Footer = styled.div`
