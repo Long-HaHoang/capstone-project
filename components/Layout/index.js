@@ -8,10 +8,10 @@ export default function Layout({ children, cartTotal }) {
   return (
     <>
       <ShopHeader cartTotal={cartTotal} />
-      <Styled.AppContainer>{children}</Styled.AppContainer>
-      <footer>
+      <Styled.ContentContainer>{children}</Styled.ContentContainer>
+      <Styled.Footer>
         <p>&copy; 2023 by long ha hoang</p>
-      </footer>
+      </Styled.Footer>
     </>
   );
 }

@@ -7,9 +7,12 @@ const ShopHeader = styled.header`
   top: 0;
   left: 0;
   z-index: 3;
-  background-color: white;
+
   width: 100%;
   padding: 10px 25px;
+
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
   border-bottom: solid lightgray;
 
   display: flex;
@@ -28,7 +31,8 @@ const ShoppingCartLink = styled(Link)`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  text-decoration: none;
+  color: inherit;
+  text-decoration: inherit;
 `;
 
 export { ShopHeader, ShopH1, ShoppingCartLink };

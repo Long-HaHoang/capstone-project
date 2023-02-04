@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 const MainContent = styled.main`
   margin-top: 60px;
@@ -21,7 +22,48 @@ const CartItemList = styled.ul`
 `;
 
 const TopInfoSection = styled.section`
-  border: solid black;
+  position: relative;
+  border-bottom: solid lightgray;
+  width: 100%;
+  padding: 0px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
-export { MainContent, CartItemList, TopInfoSection };
+const WrapperLinkHeader = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 10% 90%;
+  place-items: center;
+`;
+
+const CartBackLink = styled(Link)`
+  position: absolute;
+  bottom: 60px;
+  width: fit-content;
+  align-self: flex-start;
+`;
+
+const TopInfoSectionHeader = styled.h2`
+  width: fit-content;
+  margin: 0;
+`;
+
+const CartContentMetric = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+`;
+
+export {
+  MainContent,
+  CartItemList,
+  TopInfoSection,
+  CartBackLink,
+  CartContentMetric,
+  WrapperLinkHeader,
+  TopInfoSectionHeader,
+};
