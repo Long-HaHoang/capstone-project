@@ -8,9 +8,7 @@ export default function Layout({ children, cartTotal }) {
   return (
     <>
       <ShopHeader cartTotal={cartTotal} />
-      <br />
       <Styled.ContentContainer>{children}</Styled.ContentContainer>
-      <br />
       <Styled.Footer>
         <p>&copy; 2023 by long ha hoang</p>
       </Styled.Footer>
