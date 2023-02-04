@@ -2,11 +2,11 @@
 import styled from "styled-components";
 
 // Import internal resources
-import Link from "next/link";
 import CartItemCard from "@/components/CartItemCard";
 
 // Import styled components
 import * as Styled from "@/components/ShoppingCart.styled.js";
+import * as Icon from "@/components/Icons";
 
 // Import helper functions
 import { formatNumberToDeCurrency } from "@/helpers/formatNumberToCurrency";
@@ -25,14 +25,15 @@ export default function ShoppingCartPage({ cartItems, onDeleteItem }) {
   return (
     <Styled.MainContent>
       <Styled.TopInfoSection>
-        <Styled.CartBackLink href={"/"}>back</Styled.CartBackLink>
-        <h2>Shopping Cart</h2>
+        <Styled.CartBackLink href={"/"}>
+          <Icon.SmallArrowLeft />
+        </Styled.CartBackLink>
+        <Styled.TopInfoSectionHeader>Shopping Cart</Styled.TopInfoSectionHeader>
         <Styled.CartContentMetric>
           <p>Items: {sumOfAllItemAmount}</p>
-          <p>Cartvalue: {formatNumberToDeCurrency(sumOfAllItemPrices)}</p>
+          <p>Value: {formatNumberToDeCurrency(sumOfAllItemPrices)}</p>
         </Styled.CartContentMetric>
       </Styled.TopInfoSection>
-      <Styled.CartHR />
       <Styled.CartItemList>
         {cartItems.length === 0 ? (
           <li>No items added</li>
