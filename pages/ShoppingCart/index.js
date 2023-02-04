@@ -30,7 +30,6 @@ export default function ShoppingCartPage({ cartItems, onDeleteItem }) {
         <p>Items: {sumOfAllItemAmount}</p>
         <p>Cartvalue: {formatNumberToDeCurrency(sumOfAllItemPrices)}</p>
       </Styled.TopInfoSection>
-
       <Styled.CartItemList>
         {cartItems.length === 0 ? (
           <li>No items added</li>

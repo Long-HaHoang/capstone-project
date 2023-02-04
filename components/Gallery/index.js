@@ -19,7 +19,11 @@ export default function Gallery({ onCartItem }) {
     <Styled.GallerySection>
       <Styled.GalleryList>
         {isLoading ? (
-          <p>Is Loading...</p>
+          <>
+            <br />
+            <Styled.LoadingCube />
+            <br />
+          </>
         ) : (
           products.map((product) => {
             return (
