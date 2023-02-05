@@ -53,7 +53,7 @@ export default function ShoppingCartPage({ cartItems, onDeleteItem }) {
         <Styled.SummeryHeader>Summery</Styled.SummeryHeader>
         <Styled.SummeryCard>
           <Styled.SummeryParagraph>
-            <span>Items: {sumOfAllItemAmount}||</span>
+            <span>Items: {sumOfAllItemAmount}</span>
             <span>{formatNumberToDeCurrency(sumOfAllItemPrices)}</span>
           </Styled.SummeryParagraph>
           <Styled.SummeryParagraph>
