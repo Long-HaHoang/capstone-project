@@ -27,7 +27,6 @@ const ShopH1 = styled.h1`
 `;
 
 const ShoppingCartLink = styled(Link)`
-  width: 13%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
