@@ -19,10 +19,15 @@ export default function CartItemCard({ cartItem, onDeleteItem }) {
       </Styled.CartItemLeft>
       <Styled.CartItemRight>
         <Styled.CartItemParagraph>{cartItem.title}</Styled.CartItemParagraph>
-        <Styled.CartItemParagraph>{`Amount: ${cartItem.amount}`}</Styled.CartItemParagraph>
-        <button type="button" onClick={() => onDeleteItem(cartItem.id)}>
+        <Styled.CartItemParagraph>
+          Amount: {cartItem.amount}
+        </Styled.CartItemParagraph>
+        <Styled.CartItemDeleteButton
+          type="button"
+          onClick={() => onDeleteItem(cartItem.id)}
+        >
           Delete
-        </button>
+        </Styled.CartItemDeleteButton>
       </Styled.CartItemRight>
     </Styled.CartItemArticle>
   );

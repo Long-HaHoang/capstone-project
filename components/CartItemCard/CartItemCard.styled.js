@@ -41,6 +41,11 @@ const CartItemRight = styled.div`
 
 const CartItemParagraph = styled.p`
   margin: 0;
+  text-align: center;
+`;
+
+const CartItemDeleteButton = styled.button`
+  align-self: flex-end;
 `;
 
 export {
@@ -49,4 +54,5 @@ export {
   CartItemLeft,
   CartItemRight,
   CartItemParagraph,
+  CartItemDeleteButton,
 };
