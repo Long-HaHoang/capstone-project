@@ -14,9 +14,14 @@ export default function ShopHeader({ cartTotal }) {
   return (
     <Styled.ShopHeader>
       <Styled.ShopH1>Shop Name</Styled.ShopH1>
-      <Styled.ShoppingCartLink href={"/ShoppingCart"}>
+      <Styled.ShoppingCartLink
+        aria-label="Checkout link"
+        href={"/ShoppingCart"}
+      >
         <SmallCart />
-        <span>{cartTotal}</span>
+        {cartTotal !== 0 ? (
+          <Styled.ShoppingCartCounter>{cartTotal}</Styled.ShoppingCartCounter>
+        ) : null}
       </Styled.ShoppingCartLink>
     </Styled.ShopHeader>
   );

@@ -27,12 +27,17 @@ const ShopH1 = styled.h1`
 `;
 
 const ShoppingCartLink = styled(Link)`
+  width: 13%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   color: inherit;
   text-decoration: inherit;
 `;
 
-export { ShopHeader, ShopH1, ShoppingCartLink };
+const ShoppingCartCounter = styled.span`
+  font-size: 18px;
+`;
+
+export { ShopHeader, ShopH1, ShoppingCartLink, ShoppingCartCounter };
