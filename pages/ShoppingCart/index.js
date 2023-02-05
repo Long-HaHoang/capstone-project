@@ -22,6 +22,7 @@ export default function ShoppingCartPage({ cartItems, onDeleteItem }) {
     .map((item) => item.amount)
     .reduce(sumUpArray, 0);
 
+  // Shipping Cost will dynamic fetch from the DB
   const shippingCost = 4.99;
 
   return (
