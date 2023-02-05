@@ -11,7 +11,7 @@ const Thumbnail = styled(Image)`
 const CartItemArticle = styled.article`
   border: solid lightgray;
   border-radius: 16px;
-  width: 90vw;
+  width: 80vw;
   padding: 10px;
 
   display: grid;
