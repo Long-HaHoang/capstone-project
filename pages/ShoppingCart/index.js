@@ -22,6 +22,8 @@ export default function ShoppingCartPage({ cartItems, onDeleteItem }) {
     .map((item) => item.amount)
     .reduce(sumUpArray, 0);
 
+  const shippingCost = 4.99;
+
   return (
     <Styled.MainContent>
       <Styled.TopInfoSection>
@@ -47,6 +49,26 @@ export default function ShoppingCartPage({ cartItems, onDeleteItem }) {
           })
         )}
       </Styled.CartItemList>
+      <Styled.SummerySection>
+        <Styled.SummeryHeader>Summery</Styled.SummeryHeader>
+        <Styled.SummeryCard>
+          <Styled.SummeryParagraph>
+            <span>Items: {sumOfAllItemAmount}||</span>
+            <span>{formatNumberToDeCurrency(sumOfAllItemPrices)}</span>
+          </Styled.SummeryParagraph>
+          <Styled.SummeryParagraph>
+            <span>Shipping cost: </span>
+            <span>{formatNumberToDeCurrency(shippingCost)}</span>
+          </Styled.SummeryParagraph>
+          <hr />
+          <Styled.SummeryParagraph>
+            <span>Total price: </span>
+            <span>
+              {formatNumberToDeCurrency(sumOfAllItemPrices + shippingCost)}
+            </span>
+          </Styled.SummeryParagraph>
+        </Styled.SummeryCard>
+      </Styled.SummerySection>
     </Styled.MainContent>
   );
 }

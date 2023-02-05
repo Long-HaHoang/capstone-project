@@ -58,6 +58,52 @@ const CartContentMetric = styled.div`
   justify-content: space-evenly;
 `;
 
+const SummerySection = styled.div`
+  position: relative;
+  width: 100%;
+  padding: 0px 10px;
+  border-top: solid lightgray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SummeryHeader = styled.h2`
+  justify-self: flex-start;
+  align-self: flex-start;
+  color: darkgray;
+  padding: 10px;
+  margin: 0;
+  font-size: 20px;
+`;
+
+const SummeryCard = styled.div`
+  width: 100%;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+
+  hr {
+    height: 3px;
+    width: 100%;
+    background-color: lightgray;
+    border: none;
+  }
+`;
+
+const SummeryParagraph = styled.p`
+  width: 80%;
+  justify-self: center;
+  align-self: center;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export {
   MainContent,
   CartItemList,
@@ -66,4 +112,8 @@ export {
   CartContentMetric,
   WrapperLinkHeader,
   TopInfoSectionHeader,
+  SummerySection,
+  SummeryHeader,
+  SummeryCard,
+  SummeryParagraph,
 };

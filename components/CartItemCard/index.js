@@ -10,8 +10,8 @@ export default function CartItemCard({ cartItem, onDeleteItem }) {
         <Styled.Thumbnail
           src={cartItem.thumbnail}
           alt={cartItem.thumbnail ? "Thumbnail of item" : "no image available"}
-          width={100}
-          height={100}
+          width={80}
+          height={80}
         />
         <Styled.CartItemParagraph>
           {formatNumberToDeCurrency(cartItem.price)}
