@@ -50,30 +50,30 @@ export default function ShoppingCartPage({ cartItems, onDeleteItem }) {
         )}
       </Styled.CartItemList>
       {cartItems.length !== 0 ? (
-        <Styled.SummerySection>
-          <Styled.SummeryHeader>Summery</Styled.SummeryHeader>
-          <Styled.SummeryCard>
-            <Styled.SummeryParagraph>
+        <Styled.SummarySection>
+          <Styled.SummaryHeader>Summary</Styled.SummaryHeader>
+          <Styled.SummaryCard>
+            <Styled.SummaryParagraph>
               <span>
                 {`${
                   sumOfAllItemAmount === 1 ? "Item" : "Items"
                 } (${sumOfAllItemAmount})`}
               </span>
               <span>{formatNumberToDeCurrency(sumOfAllItemPrices)}</span>
-            </Styled.SummeryParagraph>
-            <Styled.SummeryParagraph>
+            </Styled.SummaryParagraph>
+            <Styled.SummaryParagraph>
               <span>Shipping cost: </span>
               <span>{formatNumberToDeCurrency(shippingCost)}</span>
-            </Styled.SummeryParagraph>
+            </Styled.SummaryParagraph>
             <hr />
-            <Styled.SummeryParagraph>
+            <Styled.SummaryParagraph>
               <span>Total price: </span>
               <span>
                 {formatNumberToDeCurrency(sumOfAllItemPrices + shippingCost)}
               </span>
-            </Styled.SummeryParagraph>
-          </Styled.SummeryCard>
-        </Styled.SummerySection>
+            </Styled.SummaryParagraph>
+          </Styled.SummaryCard>
+        </Styled.SummarySection>
       ) : null}
     </Styled.MainContent>
   );
