@@ -50,7 +50,7 @@ export default function ShoppingCartPage({ cartItems, onDeleteItem }) {
           })
         )}
       </Styled.CartItemList>
-      {cartItems.length !== 0 ? (
+      {cartItems.length !== 0 && (
         <Styled.SummarySection>
           <Styled.SummaryHeader>Summary</Styled.SummaryHeader>
           <Styled.SummaryCard>
@@ -75,7 +75,7 @@ export default function ShoppingCartPage({ cartItems, onDeleteItem }) {
             </Styled.SummaryParagraph>
           </Styled.SummaryCard>
         </Styled.SummarySection>
-      ) : null}
+      )}
     </Styled.MainContent>
   );
 }

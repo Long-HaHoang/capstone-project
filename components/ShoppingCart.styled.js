@@ -54,14 +54,13 @@ const TopInfoSectionHeader = styled.h2`
 const CartContentMetric = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: row;
   justify-content: space-evenly;
 `;
 
 const SummarySection = styled.div`
   position: relative;
   width: 100%;
-  padding: 0px 10px;
+  padding: 0 10px;
   border-top: solid lightgray;
   display: flex;
   flex-direction: column;
@@ -99,7 +98,6 @@ const SummaryParagraph = styled.p`
   align-self: center;
 
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
 `;
