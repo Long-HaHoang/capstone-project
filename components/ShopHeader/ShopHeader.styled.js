@@ -37,7 +37,7 @@ const ShoppingCartLink = styled(Link)`
 `;
 
 const ShopHeaderLink = styled(ShoppingCartLink)`
-  width: 50%;
+  width: 100%;
 `;
 
 const ShoppingCartCounter = styled.span`
