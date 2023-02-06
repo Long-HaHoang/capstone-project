@@ -21,6 +21,7 @@ const LoadingCube = styled.div`
   width: 48px;
   height: 48px;
   position: relative;
+  margin: 20px 0px;
 
   &:before {
     content: "";

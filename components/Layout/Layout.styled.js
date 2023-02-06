@@ -11,7 +11,7 @@ const ContentContainer = styled.div`
   padding: 20px 0;
 `;
 
-const Footer = styled.div`
+const Footer = styled.footer`
   width: 100vw;
   display: flex;
   flex-direction: column;

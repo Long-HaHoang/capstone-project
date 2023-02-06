@@ -19,7 +19,7 @@ export default function ShopHeader({ cartTotal }) {
         href={"/ShoppingCart"}
       >
         <SmallCart />
-        {cartTotal !== 0 ? (
+        {cartTotal ? (
           <Styled.ShoppingCartCounter>{cartTotal}</Styled.ShoppingCartCounter>
         ) : null}
       </Styled.ShoppingCartLink>

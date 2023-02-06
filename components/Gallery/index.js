@@ -20,9 +20,7 @@ export default function Gallery({ onCartItem }) {
       <Styled.GalleryList>
         {isLoading ? (
           <>
-            <br />
             <Styled.LoadingCube />
-            <br />
           </>
         ) : (
           products.map((product) => {

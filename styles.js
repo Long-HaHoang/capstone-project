@@ -17,8 +17,6 @@ export default createGlobalStyle`
     font-family: Roboto, sans-serif;
     display: flex;
     justify-content: center;
-
-    /* border: solid red; */
     background-color: var(--primary-color);
     color: var(--secondary-color);
   }
