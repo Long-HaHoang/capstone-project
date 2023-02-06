@@ -6,9 +6,10 @@ import Image from "next/image";
 
 //temporary style
 export const ArticleCard = styled.article`
-  border: solid black;
+  border: solid lightgray;
   border-radius: 16px;
 
+  height: fit-content;
   width: 90vw;
 
   display: grid;
@@ -17,6 +18,7 @@ export const ArticleCard = styled.article`
 `;
 
 export const Thumbnail = styled(Image)`
+  border: #d3d3d350 solid;
   border-radius: 8px;
   object-fit: cover;
 `;
