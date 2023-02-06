@@ -26,7 +26,7 @@ export default function ShoppingCartPage({ cartItems, onDeleteItem }) {
   const shippingCost = 4.99;
 
   return (
-    <Styled.MainContent>
+    <>
       <Styled.TopInfoSection>
         <Styled.CartBackLink href={"/"}>
           <Icon.SmallArrowLeft />
@@ -76,6 +76,6 @@ export default function ShoppingCartPage({ cartItems, onDeleteItem }) {
           </Styled.SummaryCard>
         </Styled.SummarySection>
       )}
-    </Styled.MainContent>
+    </>
   );
 }

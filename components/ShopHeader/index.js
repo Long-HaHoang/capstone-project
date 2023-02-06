@@ -13,7 +13,10 @@ import { SmallCart } from "@/components/Icons";
 export default function ShopHeader({ cartTotal }) {
   return (
     <Styled.ShopHeader>
-      <Styled.ShopH1>Shop Name</Styled.ShopH1>
+      <Styled.ShopHeaderLink href={"/"}>
+        <Styled.ShopH1>Shop Name</Styled.ShopH1>
+      </Styled.ShopHeaderLink>
+
       <Styled.ShoppingCartLink
         aria-label="Checkout link"
         href={"/ShoppingCart"}

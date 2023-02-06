@@ -1,16 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
 
-const MainContent = styled.main`
-  margin-top: 60px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-`;
-
 const CartItemList = styled.ul`
   display: flex;
   flex-direction: column;
@@ -103,7 +93,6 @@ const SummaryParagraph = styled.p`
 `;
 
 export {
-  MainContent,
   CartItemList,
   TopInfoSection,
   CartBackLink,
