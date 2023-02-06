@@ -25,7 +25,7 @@ const TopInfoSection = styled.section`
   position: relative;
   border-bottom: solid lightgray;
   width: 100%;
-  padding: 0px 10px;
+  padding: 0 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
