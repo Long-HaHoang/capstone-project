@@ -8,6 +8,7 @@ import { useState } from "react";
 import LoadingCube from "@/components/LoadingCube";
 import { StyledImage } from "@/components/StyledImage";
 import * as Icon from "@/components/Icons";
+import { formatNumberToDeCurrency } from "@/helpers/formatNumberToCurrency";
 
 export default function DetailsPage({ onCartItem }) {
   const router = useRouter();
@@ -66,6 +67,7 @@ export default function DetailsPage({ onCartItem }) {
       </section>
 
       <CounterContainer>
+        <p>{formatNumberToDeCurrency(product.price)}</p>
         <CounterButton type="button" onClick={decreaseCounter}>
           <Icon.SmallMinus />
         </CounterButton>
@@ -126,7 +128,7 @@ const CounterContainer = styled.div`
   align-items: center;
   gap: 15px;
 
-  width: 70%;
+  width: 80%;
   height: 50px;
   background-color: lightgray;
   border-radius: 8px;
