@@ -4,6 +4,7 @@ import { useState } from "react";
 
 // Import internal resources
 import { formatNumberToDeCurrency } from "@/helpers/formatNumberToCurrency";
+import Link from "next/link";
 
 // Import of styled components
 import * as Styled from "@/components/ItemCard/ItemCard.styled.js";
@@ -38,7 +39,7 @@ export default function ItemCard({ product, onCartItem }) {
   return (
     <li>
       <Styled.ArticleCard>
-        <span>
+        <Link href={`/Details/${product.id}`}>
           <Styled.Thumbnail
             src={product.thumbnail}
             alt="no img"
@@ -46,9 +47,11 @@ export default function ItemCard({ product, onCartItem }) {
             height={150}
             priority
           />
-        </span>
+        </Link>
         <Styled.CardInformationWrapper>
-          <Styled.ProductTitle>{product.title}</Styled.ProductTitle>
+          <Styled.ProductHeaderLink href={`/Details/${product.id}`}>
+            <Styled.ProductTitle>{product.title}</Styled.ProductTitle>
+          </Styled.ProductHeaderLink>
           <p>{formatNumberToDeCurrency(product.price)}</p>
           <Styled.CounterContainer>
             <Styled.CounterButton type="button" onClick={decreaseCounter}>

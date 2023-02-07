@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 // Import of internal resources
 import Image from "next/image";
+import Link from "next/link";
 
 //temporary style
 export const ArticleCard = styled.article`
@@ -10,7 +11,7 @@ export const ArticleCard = styled.article`
   border-radius: 16px;
 
   height: fit-content;
-  width: 90vw;
+  width: 97vw;
 
   display: grid;
   grid-template-columns: 50% 50%;
@@ -57,4 +58,13 @@ export const CounterButton = styled.button`
 
 export const CartButton = styled(CounterButton)`
   height: 35px;
+`;
+
+export const ProductHeaderLink = styled(Link)`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: inherit;
+  text-decoration: inherit;
 `;

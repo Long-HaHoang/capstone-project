@@ -9,6 +9,7 @@ const ShopHeader = styled.header`
   z-index: 3;
 
   width: 100%;
+  height: 60px;
   padding: 10px 25px;
 
   background-color: var(--secondary-color);
@@ -35,8 +36,18 @@ const ShoppingCartLink = styled(Link)`
   text-decoration: inherit;
 `;
 
+const ShopHeaderLink = styled(ShoppingCartLink)`
+  width: 100%;
+`;
+
 const ShoppingCartCounter = styled.span`
   font-size: 18px;
 `;
 
-export { ShopHeader, ShopH1, ShoppingCartLink, ShoppingCartCounter };
+export {
+  ShopHeader,
+  ShopH1,
+  ShoppingCartLink,
+  ShoppingCartCounter,
+  ShopHeaderLink,
+};

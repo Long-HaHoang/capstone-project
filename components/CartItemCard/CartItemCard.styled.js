@@ -2,13 +2,14 @@
 import Image from "next/image";
 // Import internal resources
 import styled from "styled-components";
+import Link from "next/link";
 
-const Thumbnail = styled(Image)`
+export const Thumbnail = styled(Image)`
   border-radius: 8px;
   object-fit: cover;
 `;
 
-const CartItemArticle = styled.article`
+export const CartItemArticle = styled.article`
   border: solid lightgray;
   border-radius: 16px;
   width: 80vw;
@@ -19,7 +20,7 @@ const CartItemArticle = styled.article`
   place-items: center;
 `;
 
-const CartItemLeft = styled.div`
+export const CartItemLeft = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
@@ -29,7 +30,7 @@ const CartItemLeft = styled.div`
   gap: 10px;
 `;
 
-const CartItemRight = styled.div`
+export const CartItemRight = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
@@ -39,20 +40,20 @@ const CartItemRight = styled.div`
   padding-top: 10px;
 `;
 
-const CartItemParagraph = styled.p`
+export const CartItemParagraph = styled.p`
   margin: 0;
   text-align: center;
 `;
 
-const CartItemDeleteButton = styled.button`
+export const CartItemDeleteButton = styled.button`
   align-self: flex-end;
 `;
 
-export {
-  Thumbnail,
-  CartItemArticle,
-  CartItemLeft,
-  CartItemRight,
-  CartItemParagraph,
-  CartItemDeleteButton,
-};
+export const ShoppingCartLink = styled(Link)`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: inherit;
+  text-decoration: inherit;
+`;

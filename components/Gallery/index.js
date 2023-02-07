@@ -5,8 +5,9 @@ import useSWR from "swr";
 // Import internal resources
 import ItemCard from "../ItemCard";
 
-// Import styles
+// Import styled components
 import * as Styled from "@/components/Gallery/Gallery.styles.js";
+import LoadingCube from "../LoadingCube";
 
 export default function Gallery({ onCartItem }) {
   const { data: products, isLoading, error } = useSWR("/api/products");
@@ -20,7 +21,7 @@ export default function Gallery({ onCartItem }) {
       <Styled.GalleryList>
         {isLoading ? (
           <>
-            <Styled.LoadingCube />
+            <LoadingCube />
           </>
         ) : (
           products.map((product) => {

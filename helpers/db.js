@@ -42,4 +42,10 @@ async function getAllProducts() {
   return products;
 }
 
-export { getAllProducts };
+async function getProduct(id) {
+  await connectDatabase();
+  const product = await Product.findOne({ id });
+  return product;
+}
+
+export { getAllProducts, getProduct };
