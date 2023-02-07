@@ -18,7 +18,10 @@ export default function DetailsPage({ onCartItem }) {
 
   const { data: product, isLoading, error } = useSWR(`/api/products/${id}`);
 
-  if (!isReady || isLoading || error) return <LoadingCube />;
+  if (!isReady || isLoading) return <LoadingCube />;
+  if (error) {
+    return <h2>Seems like this product is not avaiable!</h2>;
+  }
 
   function increaseCounter() {
     const newCounter = counter === 99 ? counter : counter + 1;
