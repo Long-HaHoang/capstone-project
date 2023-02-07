@@ -13,6 +13,10 @@ const MainContent = styled.main`
   justify-content: center;
   align-items: center;
   gap: 10px;
+
+  @media (min-width: 997px) {
+    margin-bottom: 60px;
+  }
 `;
 
 const Footer = styled.footer`
