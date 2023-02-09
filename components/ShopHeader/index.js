@@ -61,6 +61,8 @@ const StyledShoppingCartLink = styled(Link)`
 
 const StyledShopHeaderLink = styled(Link)`
   width: 100%;
+  color: inherit;
+  text-decoration: inherit;
 `;
 
 const StyledShoppingCartCounter = styled.span`

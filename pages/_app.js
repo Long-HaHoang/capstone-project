@@ -18,32 +18,6 @@ export default function App({ Component, pageProps }) {
     .map((item) => item.amount)
     .reduce(sumUpArray, 0);
 
-  /**
-   * Checks if the object is already added to the shopping cart,
-   * and conditionally adds it to an array or assign a new amount.
-   * @param {Object} newCartItem - A product item object
-   */
-  function handleCartItem(newCartItem) {
-    const itemIndex = cartItems.findIndex(
-      (element) => element.id === newCartItem.id
-    );
-
-    const isItemAvaiable =
-      cartItems.find((element) => element.id === newCartItem.id) === undefined;
-
-    const updatedItemAmount = isItemAvaiable
-      ? 0
-      : Number(cartItems[itemIndex].amount) + Number(newCartItem.amount);
-
-    if (isItemAvaiable) {
-      updateCartItems([...cartItems, newCartItem]);
-    } else {
-      updateCartItems((draft) => {
-        draft[itemIndex].amount = updatedItemAmount;
-      });
-    }
-  }
-
   function deleteCartItem(deleteItemID) {
     updateCartItems(cartItems.filter((item) => item.id !== deleteItemID));
   }
