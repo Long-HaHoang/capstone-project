@@ -10,7 +10,7 @@ import { SmallCart } from "@/components/Icons";
 export default function ShopHeader({ cartTotal }) {
   return (
     <StyledShopHeader>
-      <StyledShopHeaderLink href={"/"}>
+      <StyledShopHeaderLink aria-label="Link to homepage" href={"/"}>
         <StyledShopH1>Shop Name</StyledShopH1>
       </StyledShopHeaderLink>
 
