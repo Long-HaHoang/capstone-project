@@ -6,22 +6,9 @@ import { useImmer } from "use-immer";
 import GlobalStyle from "@/styles";
 import Head from "next/head";
 import Layout from "@/components/Layout";
+import useStore from "@/hooks/useStore";
 
 export default function App({ Component, pageProps }) {
-  const [cartItems, updateCartItems] = useImmer([]);
-
-  // Duplication is far cheaper than the wrong abstraction.
-  // Reduces the cartItem array to the get the total amount
-  // of item added to the shopping cart
-  const sumUpArray = (accumulator, currentValue) => accumulator + currentValue;
-  const sumOfAllItemAmount = cartItems
-    .map((item) => item.amount)
-    .reduce(sumUpArray, 0);
-
-  function deleteCartItem(deleteItemID) {
-    updateCartItems(cartItems.filter((item) => item.id !== deleteItemID));
-  }
-
   return (
     <SWRConfig
       value={{
@@ -38,13 +25,8 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Capstone Project</title>
       </Head>
-      <Layout cartTotal={sumOfAllItemAmount}>
-        <Component
-          {...pageProps}
-          onCartItem={handleCartItem}
-          onDeleteItem={deleteCartItem}
-          cartItems={cartItems}
-        />
+      <Layout>
+        <Component {...pageProps} />
       </Layout>
     </SWRConfig>
   );

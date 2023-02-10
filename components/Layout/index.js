@@ -1,13 +1,16 @@
 // Import external resources
 import styled from "styled-components";
 
+// Import internal resources
+import useStore from "@/hooks/useStore";
+
 // Import components
 import ShopHeader from "../ShopHeader";
 
-export default function Layout({ children, cartTotal }) {
+export default function Layout({ children }) {
   return (
     <>
-      <ShopHeader cartTotal={cartTotal} />
+      <ShopHeader />
       <StyledMainContent>{children}</StyledMainContent>
       <StyledFooter>
         <p>&copy; 2023 by long ha hoang</p>

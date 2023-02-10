@@ -3,11 +3,19 @@ import styled from "styled-components";
 
 // Import internal resources
 import Link from "next/link";
+import useStore from "@/hooks/useStore";
 
 // Import of SVG Icon Component
 import { SmallCart } from "@/components/Icons";
 
-export default function ShopHeader({ cartTotal }) {
+export default function ShopHeader() {
+  const [cartItems] = useStore((state) => [state.cartItems]);
+
+  const sumUpArray = (accumulator, currentValue) => accumulator + currentValue;
+  const cartTotalAmount = cartItems
+    .map((item) => item.amount)
+    .reduce(sumUpArray, 0);
+
   return (
     <StyledShopHeader>
       <StyledShopHeaderLink aria-label="Link to homepage" href={"/"}>
@@ -16,8 +24,10 @@ export default function ShopHeader({ cartTotal }) {
 
       <StyledShoppingCartLink aria-label="Checkout link" href={"/ShoppingCart"}>
         <SmallCart />
-        {cartTotal && (
-          <StyledShoppingCartCounter>{cartTotal}</StyledShoppingCartCounter>
+        {cartTotalAmount && (
+          <StyledShoppingCartCounter>
+            {cartTotalAmount}
+          </StyledShoppingCartCounter>
         )}
       </StyledShoppingCartLink>
     </StyledShopHeader>

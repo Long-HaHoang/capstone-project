@@ -25,13 +25,7 @@ export default function Gallery({ onCartItem }) {
           </>
         ) : (
           products.map((product) => {
-            return (
-              <ItemCard
-                key={product.id}
-                product={product}
-                onCartItem={onCartItem}
-              />
-            );
+            return <ItemCard key={product.id} product={product} />;
           })
         )}
       </Styled.GalleryList>
