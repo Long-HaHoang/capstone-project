@@ -1,47 +1,67 @@
 // Import external resources
 import useSWR from "swr";
 import styled from "styled-components";
+import { useImmerReducer } from "use-immer";
 
 // Import internal resources
 import { useRouter } from "next/router";
-import { useState } from "react";
+import useStore from "@/hooks/useStore";
 import LoadingCube from "@/components/LoadingCube";
 import { StyledImage } from "@/components/StyledImage";
 import * as Icon from "@/components/Icons";
 import { formatNumberToDeCurrency } from "@/helpers/formatNumberToCurrency";
 
-export default function DetailsPage({ onCartItem }) {
+export default function DetailsPage() {
   const router = useRouter();
   const { isReady } = router;
   const { id } = router.query;
-  const [counter, setCounter] = useState(0);
+
+  const initalState = { count: 0 };
+  const [countState, dispatch] = useImmerReducer(reducer, initalState);
 
   const { data: product, isLoading, error } = useSWR(`/api/products/${id}`);
+  const [cartItems, addToCart, updateCartItems] = useStore((state) => [
+    state.cartItems,
+    state.addToCart,
+    state.updateCartItems,
+  ]);
 
   if (!isReady || isLoading) return <LoadingCube />;
   if (error) {
     return <h2>Seems like this product is not avaiable!</h2>;
   }
 
-  function increaseCounter() {
-    const newCounter = counter === 99 ? counter : counter + 1;
-    setCounter(newCounter);
-  }
-
-  function decreaseCounter() {
-    const newCounter = counter === 0 ? counter : counter - 1;
-    setCounter(newCounter);
-  }
-
-  function addToCart() {
-    if (counter > 0) {
-      onCartItem({
-        ...product,
-        amount: counter,
-      });
-
-      setCounter(0);
+  function reducer(draft, action) {
+    switch (action.type) {
+      case "reset":
+        return initalState;
+      case "increment":
+        return void draft.count++;
+      case "decrement":
+        return void draft.count--;
     }
+  }
+
+  function handleCartItem() {
+    const isItemAvaiable =
+      cartItems.find((element) => element.id === product.id) !== undefined;
+
+    if (isItemAvaiable) {
+      const newCartItems = cartItems.map((element) => {
+        if (element.id === product.id) {
+          return {
+            ...element,
+            amount: element.amount + countState.count,
+          };
+        } else {
+          return element;
+        }
+      });
+      updateCartItems(newCartItems);
+    } else {
+      addToCart({ ...product, amount: countState.count });
+    }
+    dispatch({ type: "reset" });
   }
 
   return (
@@ -71,15 +91,29 @@ export default function DetailsPage({ onCartItem }) {
 
       <CounterContainer>
         <p>{formatNumberToDeCurrency(product.price)}</p>
-        <CounterButton type="button" onClick={decreaseCounter}>
+        <CounterButton
+          type="button"
+          onClick={() => {
+            if (countState.count > 0) {
+              return dispatch({ type: "decrement" });
+            }
+          }}
+        >
           <Icon.SmallMinus />
         </CounterButton>
-        <p>{counter}</p>
-        <CounterButton type="button" onClick={increaseCounter}>
+        <p>{countState.count}</p>
+        <CounterButton
+          type="button"
+          onClick={() => {
+            if (countState.count < 99) {
+              return dispatch({ type: "increment" });
+            }
+          }}
+        >
           <Icon.SmallPlus />
         </CounterButton>
 
-        <CartButton type="button" onClick={addToCart}>
+        <CartButton type="button" onClick={handleCartItem}>
           <Icon.SmallCart />
         </CartButton>
       </CounterContainer>
@@ -90,7 +124,7 @@ export default function DetailsPage({ onCartItem }) {
 const ImageContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 30vh;
+  height: 110px;
 `;
 
 const DetailsContainer = styled.div`
@@ -98,15 +132,10 @@ const DetailsContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-
+  padding: 10px;
   width: 100%;
-  height: 31rem;
+  height: 100vh;
   margin: 0;
-
-  h2,
-  p {
-    margin: 10px 0;
-  }
 `;
 
 const CounterButton = styled.button`

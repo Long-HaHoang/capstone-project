@@ -1,10 +1,12 @@
 // Import internal resources
 import { formatNumberToDeCurrency } from "@/helpers/formatNumberToCurrency";
 import Link from "next/link";
+import useStore from "@/hooks/useStore";
 // Import styled components
 import * as Styled from "@/components/CartItemCard/CartItemCard.styled.js";
 
-export default function CartItemCard({ cartItem, onDeleteItem }) {
+export default function CartItemCard({ cartItem }) {
+  const [removeCartItem] = useStore((state) => [state.removeCartItem]);
   return (
     <Styled.CartItemArticle>
       <Styled.CartItemLeft>
@@ -32,7 +34,7 @@ export default function CartItemCard({ cartItem, onDeleteItem }) {
         </Styled.CartItemParagraph>
         <Styled.CartItemDeleteButton
           type="button"
-          onClick={() => onDeleteItem(cartItem.id)}
+          onClick={() => removeCartItem(cartItem.id)}
         >
           Delete
         </Styled.CartItemDeleteButton>

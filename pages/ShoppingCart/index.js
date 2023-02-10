@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 // Import internal resources
 import CartItemCard from "@/components/CartItemCard";
+import useStore from "@/hooks/useStore";
 
 // Import styled components
 import * as Styled from "@/components/ShoppingCart.styled.js";
@@ -11,15 +12,16 @@ import * as Icon from "@/components/Icons";
 // Import helper functions
 import { formatNumberToDeCurrency } from "@/helpers/formatNumberToCurrency";
 
-export default function ShoppingCartPage({ cartItems, onDeleteItem }) {
-  const sumUpArray = (accumulator, currentValue) => accumulator + currentValue;
+export default function ShoppingCartPage() {
+  const [cartItems] = useStore((state) => [state.cartItems]);
 
-  const sumOfAllItemPrices = cartItems
-    .map((item) => item.price * item.amount)
+  const sumUpArray = (accumulator, currentValue) => accumulator + currentValue;
+  const amountOfAllCartItems = cartItems
+    .map((item) => item.amount)
     .reduce(sumUpArray, 0);
 
-  const sumOfAllItemAmount = cartItems
-    .map((item) => item.amount)
+  const priceOfAllCartItems = cartItems
+    .map((item) => item.price * item.amount)
     .reduce(sumUpArray, 0);
 
   // Shipping Cost will dynamic fetch from the DB
@@ -33,18 +35,18 @@ export default function ShoppingCartPage({ cartItems, onDeleteItem }) {
         </Styled.CartBackLink>
         <Styled.TopInfoSectionHeader>Shopping Cart</Styled.TopInfoSectionHeader>
         <Styled.CartContentMetric>
-          <p>Items: {sumOfAllItemAmount}</p>
-          <p>Value: {formatNumberToDeCurrency(sumOfAllItemPrices)}</p>
+          <p>Items: {amountOfAllCartItems}</p>
+          <p>Value: {formatNumberToDeCurrency(priceOfAllCartItems)}</p>
         </Styled.CartContentMetric>
       </Styled.TopInfoSection>
       <Styled.CartItemList>
         {cartItems.length === 0 ? (
           <li>No items added</li>
         ) : (
-          cartItems.map((eachItem) => {
+          cartItems.map((element) => {
             return (
-              <li key={eachItem.id}>
-                <CartItemCard cartItem={eachItem} onDeleteItem={onDeleteItem} />
+              <li key={element.id}>
+                <CartItemCard cartItem={element} />
               </li>
             );
           })
@@ -57,10 +59,10 @@ export default function ShoppingCartPage({ cartItems, onDeleteItem }) {
             <Styled.SummaryParagraph>
               <span>
                 {`${
-                  sumOfAllItemAmount === 1 ? "Item" : "Items"
-                } (${sumOfAllItemAmount})`}
+                  amountOfAllCartItems === 1 ? "Item" : "Items"
+                } (${amountOfAllCartItems})`}
               </span>
-              <span>{formatNumberToDeCurrency(sumOfAllItemPrices)}</span>
+              <span>{formatNumberToDeCurrency(priceOfAllCartItems)}</span>
             </Styled.SummaryParagraph>
             <Styled.SummaryParagraph>
               <span>Shipping cost: </span>
@@ -70,7 +72,7 @@ export default function ShoppingCartPage({ cartItems, onDeleteItem }) {
             <Styled.SummaryParagraph>
               <span>Total price: </span>
               <span>
-                {formatNumberToDeCurrency(sumOfAllItemPrices + shippingCost)}
+                {formatNumberToDeCurrency(priceOfAllCartItems + shippingCost)}
               </span>
             </Styled.SummaryParagraph>
           </Styled.SummaryCard>

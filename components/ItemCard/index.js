@@ -1,10 +1,11 @@
 // Import external resources and hooks
 import styled from "styled-components";
-import { useState } from "react";
+import { useImmerReducer } from "use-immer";
 
 // Import internal resources
 import { formatNumberToDeCurrency } from "@/helpers/formatNumberToCurrency";
 import Link from "next/link";
+import useStore from "@/hooks/useStore";
 
 // Import of styled components
 import * as Styled from "@/components/ItemCard/ItemCard.styled.js";
@@ -12,28 +13,47 @@ import * as Styled from "@/components/ItemCard/ItemCard.styled.js";
 // Import of SVG Icon Components
 import * as Icon from "@/components/Icons";
 
-export default function ItemCard({ product, onCartItem }) {
-  const [counter, setCounter] = useState(0);
+export default function ItemCard({ product }) {
+  const [cartItems, addToCart, updateCartItems] = useStore((state) => [
+    state.cartItems,
+    state.addToCart,
+    state.updateCartItems,
+  ]);
 
-  function increaseCounter() {
-    const newCounter = counter === 99 ? counter : counter + 1;
-    setCounter(newCounter);
-  }
+  const initalState = { count: 0 };
+  const [countState, dispatch] = useImmerReducer(reducer, initalState);
 
-  function decreaseCounter() {
-    const newCounter = counter === 0 ? counter : counter - 1;
-    setCounter(newCounter);
-  }
-
-  function addToCart() {
-    if (counter > 0) {
-      onCartItem({
-        ...product,
-        amount: counter,
-      });
-
-      setCounter(0);
+  function reducer(draft, action) {
+    switch (action.type) {
+      case "reset":
+        return initalState;
+      case "increment":
+        return void draft.count++;
+      case "decrement":
+        return void draft.count--;
     }
+  }
+
+  function handleCartItem() {
+    const isItemAvaiable =
+      cartItems.find((element) => element.id === product.id) !== undefined;
+
+    if (isItemAvaiable) {
+      const newCartItems = cartItems.map((element) => {
+        if (element.id === product.id) {
+          return {
+            ...element,
+            amount: element.amount + countState.count,
+          };
+        } else {
+          return element;
+        }
+      });
+      updateCartItems(newCartItems);
+    } else {
+      addToCart({ ...product, amount: countState.count });
+    }
+    dispatch({ type: "reset" });
   }
 
   return (
@@ -54,15 +74,29 @@ export default function ItemCard({ product, onCartItem }) {
           </Styled.ProductHeaderLink>
           <p>{formatNumberToDeCurrency(product.price)}</p>
           <Styled.CounterContainer>
-            <Styled.CounterButton type="button" onClick={decreaseCounter}>
+            <Styled.CounterButton
+              type="button"
+              onClick={() => {
+                if (countState.count > 0) {
+                  return dispatch({ type: "decrement" });
+                }
+              }}
+            >
               <Icon.SmallMinus />
             </Styled.CounterButton>
-            <p>{counter}</p>
-            <Styled.CounterButton type="button" onClick={increaseCounter}>
+            <p>{countState.count}</p>
+            <Styled.CounterButton
+              type="button"
+              onClick={() => {
+                if (countState.count < 99) {
+                  return dispatch({ type: "increment" });
+                }
+              }}
+            >
               <Icon.SmallPlus />
             </Styled.CounterButton>
 
-            <Styled.CartButton type="button" onClick={addToCart}>
+            <Styled.CartButton type="button" onClick={handleCartItem}>
               <Icon.SmallCart />
             </Styled.CartButton>
           </Styled.CounterContainer>
