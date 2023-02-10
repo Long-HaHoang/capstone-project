@@ -124,7 +124,7 @@ export default function DetailsPage() {
 const ImageContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 30vh;
+  height: 110px;
 `;
 
 const DetailsContainer = styled.div`
@@ -132,15 +132,10 @@ const DetailsContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-
+  padding: 10px;
   width: 100%;
-  height: 31rem;
+  height: 100vh;
   margin: 0;
-
-  h2,
-  p {
-    margin: 10px 0;
-  }
 `;
 
 const CounterButton = styled.button`

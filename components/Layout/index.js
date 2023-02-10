@@ -26,8 +26,6 @@ const StyledMainContent = styled.main`
   padding: 20px 0;
   width: 100%;
 
-  border: solid green;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
