@@ -12,7 +12,7 @@ export default function HeroSection() {
   const id = "e7628694-2371-4dbe-a5da-859e21dca690";
   const { data: product, isLoading, error } = useSWR(`/api/products/${id}`);
 
-  if (isLoading) return <LoadingCube />;
+  if (isLoading) return <h2>Loading...</h2>;
   if (error) {
     return <h2>The Hero Is Down</h2>;
   }
