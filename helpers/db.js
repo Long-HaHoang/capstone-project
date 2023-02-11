@@ -48,4 +48,33 @@ async function getProduct(id) {
   return product;
 }
 
-export { getAllProducts, getProduct };
+async function createProduct(product) {
+  await connectDatabase();
+  const createdProduct = await Product.create({
+    ...product,
+    id: crypto.randomUUID(),
+  });
+  return createdProduct;
+}
+
+async function deleteProduct(id) {
+  await connectDatabase();
+  const deletedProduct = getPlace(id);
+  await Product.deleteOne({ id });
+  return deletedProduct;
+}
+
+async function updateProduct(id, product) {
+  await connectDatabase();
+  await Product.updateOne({ id }, product);
+  const updatedProduct = getPlace(id);
+  return updatedProduct;
+}
+
+export {
+  getAllProducts,
+  getProduct,
+  createProduct,
+  deleteProduct,
+  updateProduct,
+};
