@@ -9,7 +9,7 @@ export default async function handler(request, response) {
     }
     case "POST": {
       const product = JSON.parse(request.body);
-      const createdProduct = await createProduct(place);
+      const createdProduct = await createProduct(product);
       response.status(201).json(createdProduct);
     }
 
