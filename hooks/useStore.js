@@ -4,6 +4,7 @@ import { immer } from "zustand/middleware/immer";
 const config = (set) => {
   const initalState = {
     cartItems: [],
+    position: "/",
     addToCart: (newItemObject) => {
       set((draft) => {
         draft.cartItems.push(newItemObject);
@@ -18,6 +19,12 @@ const config = (set) => {
       set((draft) => {
         draft.cartItems = draft.cartItems.filter((item) => item.id !== id);
       }),
+
+    updatePosion: (newPosition) => {
+      set((draft) => {
+        draft.position = newPosition;
+      });
+    },
   };
 
   return initalState;
