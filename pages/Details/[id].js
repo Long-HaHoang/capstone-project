@@ -20,7 +20,8 @@ export default function DetailsPage() {
   const [countState, dispatch] = useImmerReducer(reducer, initalState);
 
   const { data: product, isLoading, error } = useSWR(`/api/products/${id}`);
-  const [cartItems, addToCart, updateCartItems] = useStore((state) => [
+  const [role, cartItems, addToCart, updateCartItems] = useStore((state) => [
+    state.role,
     state.cartItems,
     state.addToCart,
     state.updateCartItems,
@@ -89,34 +90,36 @@ export default function DetailsPage() {
         <p>{product.description}</p>
       </section>
 
-      <CounterContainer>
-        <p>{formatNumberToDeCurrency(product.price)}</p>
-        <CounterButton
-          type="button"
-          onClick={() => {
-            if (countState.count > 0) {
-              return dispatch({ type: "decrement" });
-            }
-          }}
-        >
-          <Icon.SmallMinus />
-        </CounterButton>
-        <p>{countState.count}</p>
-        <CounterButton
-          type="button"
-          onClick={() => {
-            if (countState.count < 99) {
-              return dispatch({ type: "increment" });
-            }
-          }}
-        >
-          <Icon.SmallPlus />
-        </CounterButton>
+      {role === "buyer" && (
+        <CounterContainer>
+          <p>{formatNumberToDeCurrency(product.price)}</p>
+          <CounterButton
+            type="button"
+            onClick={() => {
+              if (countState.count > 0) {
+                return dispatch({ type: "decrement" });
+              }
+            }}
+          >
+            <Icon.SmallMinus />
+          </CounterButton>
+          <p>{countState.count}</p>
+          <CounterButton
+            type="button"
+            onClick={() => {
+              if (countState.count < 99) {
+                return dispatch({ type: "increment" });
+              }
+            }}
+          >
+            <Icon.SmallPlus />
+          </CounterButton>
 
-        <CartButton type="button" onClick={handleCartItem}>
-          <Icon.SmallCart />
-        </CartButton>
-      </CounterContainer>
+          <CartButton type="button" onClick={handleCartItem}>
+            <Icon.SmallCart />
+          </CartButton>
+        </CounterContainer>
+      )}
     </DetailsContainer>
   );
 }

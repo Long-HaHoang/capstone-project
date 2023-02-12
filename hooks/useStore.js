@@ -6,7 +6,7 @@ const config = (set) => {
     cartItems: [],
     position: "Login",
     session: false,
-    role: "buyer",
+    role: "guest",
     addToCart: (newItemObject) => {
       set((draft) => {
         draft.cartItems.push(newItemObject);

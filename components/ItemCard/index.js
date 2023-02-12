@@ -14,7 +14,8 @@ import * as Styled from "@/components/ItemCard/ItemCard.styled.js";
 import * as Icon from "@/components/Icons";
 
 export default function ItemCard({ product }) {
-  const [cartItems, addToCart, updateCartItems] = useStore((state) => [
+  const [role, cartItems, addToCart, updateCartItems] = useStore((state) => [
+    state.role,
     state.cartItems,
     state.addToCart,
     state.updateCartItems,
@@ -73,33 +74,35 @@ export default function ItemCard({ product }) {
             <Styled.ProductTitle>{product.title}</Styled.ProductTitle>
           </Styled.ProductHeaderLink>
           <p>{formatNumberToDeCurrency(product.price)}</p>
-          <Styled.CounterContainer>
-            <Styled.CounterButton
-              type="button"
-              onClick={() => {
-                if (countState.count > 0) {
-                  return dispatch({ type: "decrement" });
-                }
-              }}
-            >
-              <Icon.SmallMinus />
-            </Styled.CounterButton>
-            <p>{countState.count}</p>
-            <Styled.CounterButton
-              type="button"
-              onClick={() => {
-                if (countState.count < 99) {
-                  return dispatch({ type: "increment" });
-                }
-              }}
-            >
-              <Icon.SmallPlus />
-            </Styled.CounterButton>
+          {role === "buyer" && (
+            <Styled.CounterContainer>
+              <Styled.CounterButton
+                type="button"
+                onClick={() => {
+                  if (countState.count > 0) {
+                    return dispatch({ type: "decrement" });
+                  }
+                }}
+              >
+                <Icon.SmallMinus />
+              </Styled.CounterButton>
+              <p>{countState.count}</p>
+              <Styled.CounterButton
+                type="button"
+                onClick={() => {
+                  if (countState.count < 99) {
+                    return dispatch({ type: "increment" });
+                  }
+                }}
+              >
+                <Icon.SmallPlus />
+              </Styled.CounterButton>
 
-            <Styled.CartButton type="button" onClick={handleCartItem}>
-              <Icon.SmallCart />
-            </Styled.CartButton>
-          </Styled.CounterContainer>
+              <Styled.CartButton type="button" onClick={handleCartItem}>
+                <Icon.SmallCart />
+              </Styled.CartButton>
+            </Styled.CounterContainer>
+          )}
         </Styled.CardInformationWrapper>
       </Styled.ArticleCard>
     </li>

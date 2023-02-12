@@ -8,12 +8,13 @@ import useStore from "@/hooks/useStore";
 // Import styled components
 import * as Styled from "@/components/ShoppingCart.styled.js";
 import * as Icon from "@/components/Icons";
+import LoadingCube from "@/components/LoadingCube";
 
 // Import helper functions
 import { formatNumberToDeCurrency } from "@/helpers/formatNumberToCurrency";
 
 export default function ShoppingCartPage() {
-  const [cartItems] = useStore((state) => [state.cartItems]);
+  const [cartItems, role] = useStore((state) => [state.cartItems, state.role]);
 
   const sumUpArray = (accumulator, currentValue) => accumulator + currentValue;
   const amountOfAllCartItems = cartItems
@@ -26,6 +27,10 @@ export default function ShoppingCartPage() {
 
   // Shipping Cost will dynamic fetch from the DB
   const shippingCost = 4.99;
+
+  if (role === "guest") {
+    return <LoadingCube />;
+  }
 
   return (
     <>

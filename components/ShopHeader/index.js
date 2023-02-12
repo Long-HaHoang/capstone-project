@@ -10,13 +10,12 @@ import { useRouter } from "next/router";
 import { SmallCart } from "@/components/Icons";
 
 export default function ShopHeader() {
-  const [cartItems] = useStore((state) => [state.cartItems]);
+  const [cartItems, role] = useStore((state) => [state.cartItems, state.role]);
   const router = useRouter();
-  const [session, role, resetSession, updateRole] = useStore((state) => [
-    state.session,
-    state.role,
+  const [resetSession, updateRole, updatePosition] = useStore((state) => [
     state.resetSession,
     state.updateRole,
+    state.updatePosition,
   ]);
   const sumUpArray = (accumulator, currentValue) => accumulator + currentValue;
   const cartTotalAmount = cartItems
@@ -25,6 +24,7 @@ export default function ShopHeader() {
 
   function handleLogout() {
     updateRole("guest");
+    updatePosition("Login");
     resetSession();
     router.push("/Login");
   }
@@ -35,14 +35,19 @@ export default function ShopHeader() {
         <StyledShopH1>Shop Name</StyledShopH1>
       </StyledShopHeaderLink>
 
-      <StyledShoppingCartLink aria-label="Checkout link" href={"/ShoppingCart"}>
-        <SmallCart />
-        {cartTotalAmount && (
-          <StyledShoppingCartCounter>
-            {cartTotalAmount}
-          </StyledShoppingCartCounter>
-        )}
-      </StyledShoppingCartLink>
+      {role === "buyer" && (
+        <StyledShoppingCartLink
+          aria-label="Checkout link"
+          href={"/ShoppingCart"}
+        >
+          <SmallCart />
+          {cartTotalAmount && (
+            <StyledShoppingCartCounter>
+              {cartTotalAmount}
+            </StyledShoppingCartCounter>
+          )}
+        </StyledShoppingCartLink>
+      )}
       <button type="button" onClick={handleLogout}>
         logout
       </button>

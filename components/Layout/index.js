@@ -8,13 +8,17 @@ import useStore from "@/hooks/useStore";
 import ShopHeader from "../ShopHeader";
 
 export default function Layout({ children }) {
+  const [position] = useStore((state) => [state.position]);
+
   return (
     <>
-      <ShopHeader />
+      {position !== "Login" && <ShopHeader />}
       <StyledMainContent>{children}</StyledMainContent>
-      <StyledFooter>
-        <p>&copy; 2023 by long ha hoang</p>
-      </StyledFooter>
+      {position !== "Login" && (
+        <StyledFooter>
+          <p>&copy; 2023 by long ha hoang</p>
+        </StyledFooter>
+      )}
     </>
   );
 }
