@@ -28,7 +28,7 @@ export default function HeroSection() {
 
           <HeroRightSide>
             <HeroImage
-              src={product.images[2]}
+              src={product.images[1]}
               alt={product.title}
               fill
               sizes="(max-width: 768px) 100vw,
