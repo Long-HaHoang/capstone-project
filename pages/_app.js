@@ -1,6 +1,5 @@
 // Import external resources
 import { SWRConfig } from "swr";
-import { useImmer } from "use-immer";
 
 // Import internal resources
 import GlobalStyle from "@/styles";
