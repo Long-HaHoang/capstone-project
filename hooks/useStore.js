@@ -4,7 +4,9 @@ import { immer } from "zustand/middleware/immer";
 const config = (set) => {
   const initalState = {
     cartItems: [],
-    position: "/",
+    position: "Login",
+    session: false,
+    role: "buyer",
     addToCart: (newItemObject) => {
       set((draft) => {
         draft.cartItems.push(newItemObject);
@@ -20,9 +22,29 @@ const config = (set) => {
         draft.cartItems = draft.cartItems.filter((item) => item.id !== id);
       }),
 
-    updatePosion: (newPosition) => {
+    updatePosition: (newPosition) => {
       set((draft) => {
         draft.position = newPosition;
+      });
+    },
+    resetPosition: () => {
+      set((draft) => {
+        draft.position = "Login";
+      });
+    },
+    updateSession: (sessionSetter) => {
+      set((draft) => {
+        draft.session = sessionSetter;
+      });
+    },
+    resetSession: () => {
+      set((draft) => {
+        draft.session = false;
+      });
+    },
+    updateRole: (newRole) => {
+      set((draft) => {
+        draft.role = newRole;
       });
     },
   };

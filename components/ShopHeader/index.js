@@ -4,17 +4,30 @@ import styled from "styled-components";
 // Import internal resources
 import Link from "next/link";
 import useStore from "@/hooks/useStore";
+import { useRouter } from "next/router";
 
 // Import of SVG Icon Component
 import { SmallCart } from "@/components/Icons";
 
 export default function ShopHeader() {
   const [cartItems] = useStore((state) => [state.cartItems]);
-
+  const router = useRouter();
+  const [session, role, resetSession, updateRole] = useStore((state) => [
+    state.session,
+    state.role,
+    state.resetSession,
+    state.updateRole,
+  ]);
   const sumUpArray = (accumulator, currentValue) => accumulator + currentValue;
   const cartTotalAmount = cartItems
     .map((item) => item.amount)
     .reduce(sumUpArray, 0);
+
+  function handleLogout() {
+    updateRole("guest");
+    resetSession();
+    router.push("/Login");
+  }
 
   return (
     <StyledShopHeader>
@@ -30,6 +43,9 @@ export default function ShopHeader() {
           </StyledShoppingCartCounter>
         )}
       </StyledShoppingCartLink>
+      <button type="button" onClick={handleLogout}>
+        logout
+      </button>
     </StyledShopHeader>
   );
 }
