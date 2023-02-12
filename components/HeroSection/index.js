@@ -27,7 +27,14 @@ export default function HeroSection() {
           </HeroLeftSide>
 
           <HeroRightSide>
-            <HeroImage src={product.images[2]} alt={product.title} fill />
+            <HeroImage
+              src={product.images[2]}
+              alt={product.title}
+              fill
+              sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+            />
           </HeroRightSide>
         </HeroLink>
       </HeroWrapper>
@@ -41,6 +48,9 @@ const HeroWrapper = styled.div`
   margin-top: -20px;
   background-color: white;
   border-bottom: solid lightgray;
+  @media (min-width: 500px) {
+    height: 40vh;
+  }
 `;
 
 const HeroLink = styled(Link)`
@@ -82,7 +92,7 @@ const HeroFakebutton = styled.div`
   align-items: center;
 `;
 
-const HeroImage = styled(Image)`
+const HeroImage = styled(StyledImage)`
   padding: 10px;
   object-fit: cover;
 `;

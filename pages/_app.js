@@ -14,7 +14,8 @@ export default function App({ Component, pageProps }) {
   const [session] = useStore((state) => [state.session]);
 
   useEffect(() => {
-    !session && router.push("/Login");
+    !session && router.push("/Redirect");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <SWRConfig
