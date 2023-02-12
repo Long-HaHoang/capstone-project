@@ -6,8 +6,16 @@ import GlobalStyle from "@/styles";
 import Head from "next/head";
 import Layout from "@/components/Layout";
 import useStore from "@/hooks/useStore";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter();
+  const [session] = useStore((state) => [state.session]);
+
+  useEffect(() => {
+    !session && router.push("/Login");
+  }, []);
   return (
     <SWRConfig
       value={{
