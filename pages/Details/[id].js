@@ -127,7 +127,7 @@ export default function DetailsPage() {
 const ImageContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 110px;
+  height: 30%;
 `;
 
 const DetailsContainer = styled.div`
