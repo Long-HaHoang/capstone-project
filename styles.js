@@ -14,6 +14,7 @@ export default createGlobalStyle`
     --secondary-color: #0c0c0c;
     
     margin: 0;
+    overflow-x: hidden;
     font-family: Roboto, sans-serif;
     display: flex;
     justify-content: center;

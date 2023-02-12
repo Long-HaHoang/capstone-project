@@ -25,9 +25,6 @@ export default function LoginPage() {
     resetSession();
   }
 
-  //   updatePosition("/Login");
-  console.log(session);
-
   if (session) {
     return (
       <>
