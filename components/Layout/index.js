@@ -19,6 +19,12 @@ export default function Layout({ children }) {
           <p>&copy; 2023 by long ha hoang</p>
         </StyledFooter>
       )}
+      {position === "Login" && (
+        <LoginFooter>
+          <p>Another Footer</p>
+          <p>&copy; 2023 by long ha hoang</p>
+        </LoginFooter>
+      )}
     </>
   );
 }
@@ -45,7 +51,7 @@ const StyledFooter = styled.footer`
   position: relative;
   bottom: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 60px;
   display: flex;
   flex-direction: column;
@@ -53,4 +59,12 @@ const StyledFooter = styled.footer`
   align-items: center;
   background-color: #0c0c0c;
   color: #fcfcfc;
+`;
+
+const LoginFooter = styled(StyledFooter)`
+  position: absolute;
+
+  p {
+    margin: 0;
+  }
 `;
