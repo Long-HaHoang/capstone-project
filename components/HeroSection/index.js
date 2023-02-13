@@ -37,8 +37,7 @@ export default function HeroSection() {
 
 const HeroWrapper = styled.div`
   height: 25vh;
-  width: 100vw;
-  margin-top: -20px;
+  width: 100%;
   background-color: white;
   border-bottom: solid lightgray;
 `;
