@@ -6,7 +6,6 @@ import useSWR from "swr";
 import ItemCard from "../ItemCard";
 
 // Import styled components
-import * as Styled from "@/components/Gallery/Gallery.styles.js";
 import LoadingCube from "../LoadingCube";
 
 export default function Gallery({ onCartItem }) {
@@ -17,8 +16,8 @@ export default function Gallery({ onCartItem }) {
   }
 
   return (
-    <Styled.GallerySection>
-      <Styled.GalleryList>
+    <GallerySection>
+      <GalleryList>
         {isLoading ? (
           <>
             <LoadingCube />
@@ -28,7 +27,23 @@ export default function Gallery({ onCartItem }) {
             return <ItemCard key={product.id} product={product} />;
           })
         )}
-      </Styled.GalleryList>
-    </Styled.GallerySection>
+      </GalleryList>
+    </GallerySection>
   );
 }
+
+const GallerySection = styled.section`
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+`;
+
+const GalleryList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+`;

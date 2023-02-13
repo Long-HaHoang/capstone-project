@@ -6,6 +6,7 @@ import { useImmerReducer } from "use-immer";
 import { formatNumberToDeCurrency } from "@/helpers/formatNumberToCurrency";
 import Link from "next/link";
 import useStore from "@/hooks/useStore";
+import Image from "next/image";
 
 // Import of styled components
 import * as Styled from "@/components/ItemCard/ItemCard.styled.js";
@@ -58,9 +59,9 @@ export default function ItemCard({ product }) {
 
   return (
     <li>
-      <Styled.ArticleCard>
+      <StyledArticleCard>
         <Link href={`/Details/${product.id}`}>
-          <Styled.Thumbnail
+          <StyledThumbnail
             src={product.thumbnail}
             alt="no img"
             width={120}
@@ -68,13 +69,13 @@ export default function ItemCard({ product }) {
             priority
           />
         </Link>
-        <Styled.CardInformationWrapper>
-          <Styled.ProductHeaderLink href={`/Details/${product.id}`}>
-            <Styled.ProductTitle>{product.title}</Styled.ProductTitle>
-          </Styled.ProductHeaderLink>
+        <StyledCardInformationWrapper>
+          <StyledProductHeaderLink href={`/Details/${product.id}`}>
+            <StyledProductTitle>{product.title}</StyledProductTitle>
+          </StyledProductHeaderLink>
           <p>{formatNumberToDeCurrency(product.price)}</p>
-          <Styled.CounterContainer>
-            <Styled.CounterButton
+          <StyledCounterContainer>
+            <StyledCounterButton
               type="button"
               onClick={() => {
                 if (countState.count > 0) {
@@ -83,9 +84,9 @@ export default function ItemCard({ product }) {
               }}
             >
               <Icon.SmallMinus />
-            </Styled.CounterButton>
+            </StyledCounterButton>
             <p>{countState.count}</p>
-            <Styled.CounterButton
+            <StyledCounterButton
               type="button"
               onClick={() => {
                 if (countState.count < 99) {
@@ -94,14 +95,77 @@ export default function ItemCard({ product }) {
               }}
             >
               <Icon.SmallPlus />
-            </Styled.CounterButton>
+            </StyledCounterButton>
 
-            <Styled.CartButton type="button" onClick={handleCartItem}>
+            <StyledCartButton type="button" onClick={handleCartItem}>
               <Icon.SmallCart />
-            </Styled.CartButton>
-          </Styled.CounterContainer>
-        </Styled.CardInformationWrapper>
-      </Styled.ArticleCard>
+            </StyledCartButton>
+          </StyledCounterContainer>
+        </StyledCardInformationWrapper>
+      </StyledArticleCard>
     </li>
   );
 }
+
+const StyledArticleCard = styled.article`
+  border: solid lightgray;
+  border-radius: 16px;
+
+  height: fit-content;
+  width: 97vw;
+
+  display: grid;
+  grid-template-columns: 50% 50%;
+  place-items: center;
+`;
+
+const StyledThumbnail = styled(Image)`
+  border: #d3d3d350 solid;
+  border-radius: 8px;
+  object-fit: cover;
+`;
+
+const StyledCounterContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  width: 100%;
+`;
+
+const StyledCardInformationWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+`;
+
+const StyledProductTitle = styled.h2`
+  text-align: center;
+`;
+
+const StyledCounterButton = styled.button`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  height: 28px;
+  aspect-ratio: 1;
+`;
+
+const StyledCartButton = styled(CounterButton)`
+  height: 35px;
+`;
+
+const StyledProductHeaderLink = styled(Link)`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: inherit;
+  text-decoration: inherit;
+`;
