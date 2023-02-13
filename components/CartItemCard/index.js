@@ -3,14 +3,15 @@ import { formatNumberToDeCurrency } from "@/helpers/formatNumberToCurrency";
 import Link from "next/link";
 import useStore from "@/hooks/useStore";
 import styled from "styled-components";
+import Image from "next/image";
 
 export default function CartItemCard({ cartItem }) {
   const [removeCartItem] = useStore((state) => [state.removeCartItem]);
   return (
-    <CartItemArticle>
-      <CartItemLeft>
+    <StyledCartItemArticle>
+      <StyledCartItemLeft>
         <Link href={`/Details/${cartItem.id}`}>
-          <Thumbnail
+          <StyledThumbnail
             src={cartItem.thumbnail}
             alt={
               cartItem.thumbnail ? "Thumbnail of item" : "no image available"
@@ -20,32 +21,34 @@ export default function CartItemCard({ cartItem }) {
           />
         </Link>
 
-        <CartItemParagraph>
+        <StyledCartItemParagraph>
           {formatNumberToDeCurrency(cartItem.price)}
-        </CartItemParagraph>
-      </CartItemLeft>
-      <CartItemRight>
-        <ShoppingCartLink href={`/Details/${cartItem.id}`}>
-          <CartItemParagraph>{cartItem.title}</CartItemParagraph>
-        </ShoppingCartLink>
-        <CartItemParagraph>Amount: {cartItem.amount}</CartItemParagraph>
-        <CartItemDeleteButton
+        </StyledCartItemParagraph>
+      </StyledCartItemLeft>
+      <StyledCartItemRight>
+        <StyledShoppingCartLink href={`/Details/${cartItem.id}`}>
+          <StyledCartItemParagraph>{cartItem.title}</StyledCartItemParagraph>
+        </StyledShoppingCartLink>
+        <StyledCartItemParagraph>
+          Amount: {cartItem.amount}
+        </StyledCartItemParagraph>
+        <StyledCartItemDeleteButton
           type="button"
           onClick={() => removeCartItem(cartItem.id)}
         >
           Delete
-        </CartItemDeleteButton>
-      </CartItemRight>
-    </CartItemArticle>
+        </StyledCartItemDeleteButton>
+      </StyledCartItemRight>
+    </StyledCartItemArticle>
   );
 }
 
-export const Thumbnail = styled(Image)`
+const StyledThumbnail = styled(Image)`
   border-radius: 8px;
   object-fit: cover;
 `;
 
-export const CartItemArticle = styled.article`
+const StyledCartItemArticle = styled.article`
   border: solid lightgray;
   border-radius: 16px;
   width: 80vw;
@@ -56,7 +59,7 @@ export const CartItemArticle = styled.article`
   place-items: center;
 `;
 
-export const CartItemLeft = styled.div`
+const StyledCartItemLeft = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
@@ -66,7 +69,7 @@ export const CartItemLeft = styled.div`
   gap: 10px;
 `;
 
-export const CartItemRight = styled.div`
+const StyledCartItemRight = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
@@ -76,16 +79,16 @@ export const CartItemRight = styled.div`
   padding-top: 10px;
 `;
 
-export const CartItemParagraph = styled.p`
+const StyledCartItemParagraph = styled.p`
   margin: 0;
   text-align: center;
 `;
 
-export const CartItemDeleteButton = styled.button`
+const StyledCartItemDeleteButton = styled.button`
   align-self: flex-end;
 `;
 
-export const ShoppingCartLink = styled(Link)`
+const StyledShoppingCartLink = styled(Link)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
