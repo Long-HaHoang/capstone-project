@@ -49,9 +49,4 @@ const StyledFooter = styled.footer`
   align-items: center;
   background-color: #0c0c0c;
   color: #fcfcfc;
-
-  @media (min-width: 997px) {
-    position: fixed;
-    width: 100%;
-  }
 `;

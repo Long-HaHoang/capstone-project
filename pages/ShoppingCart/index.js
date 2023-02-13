@@ -5,6 +5,7 @@ import styled from "styled-components";
 import CartItemCard from "@/components/CartItemCard";
 import useStore from "@/hooks/useStore";
 import Link from "next/link";
+import Image from "next/image";
 
 // Import styled components
 import * as Icon from "@/components/Icons";
