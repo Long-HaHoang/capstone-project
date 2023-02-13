@@ -8,7 +8,7 @@ import ItemCard from "../ItemCard";
 // Import styled components
 import LoadingCube from "../LoadingCube";
 
-export default function Gallery({ onCartItem }) {
+export default function Gallery() {
   const { data: products, isLoading, error } = useSWR("/api/products");
 
   if (error) {

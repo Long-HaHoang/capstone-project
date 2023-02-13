@@ -8,9 +8,6 @@ import Link from "next/link";
 import useStore from "@/hooks/useStore";
 import Image from "next/image";
 
-// Import of styled components
-import * as Styled from "@/components/ItemCard/ItemCard.styled.js";
-
 // Import of SVG Icon Components
 import * as Icon from "@/components/Icons";
 
@@ -157,7 +154,7 @@ const StyledCounterButton = styled.button`
   aspect-ratio: 1;
 `;
 
-const StyledCartButton = styled(CounterButton)`
+const StyledCartButton = styled(StyledCounterButton)`
   height: 35px;
 `;
 
