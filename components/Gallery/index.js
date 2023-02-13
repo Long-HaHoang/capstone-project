@@ -33,12 +33,16 @@ export default function Gallery() {
 }
 
 const GallerySection = styled.section`
+  border: solid green;
+  width: 100%;
   display: flex;
   flex-direction: column;
   place-items: center;
 `;
 
 const GalleryList = styled.ul`
+  border: solid blue;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
