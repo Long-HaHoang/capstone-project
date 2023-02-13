@@ -24,9 +24,9 @@ export default function ShopHeader() {
 
   function handleLogout() {
     updateRole("guest");
-    updatePosition("Login");
+    updatePosition("LandingPage");
     resetSession();
-    router.push("/Login");
+    router.push("/LandingPage");
   }
 
   return (

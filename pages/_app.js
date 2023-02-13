@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }) {
   const [session] = useStore((state) => [state.session]);
 
   useEffect(() => {
-    !session && router.push("/Redirect");
+    !session && router.push("/LandingPage");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (

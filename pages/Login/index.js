@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import useStore from "@/hooks/useStore";
+import Link from "next/link";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -37,13 +38,16 @@ export default function LoginPage() {
   } else {
     return (
       <>
-        <h2>Login Page</h2>
-        <button type="button" onClick={() => handleLoginButton("buyer")}>
-          Buyer
-        </button>
-        <button type="button" onClick={() => handleLoginButton("seller")}>
-          Seller
-        </button>
+        <Link href={"/LandingPage"}>Back to Landing Page</Link>
+        <form>
+          <fieldset>
+            <legend>Login as seller</legend>
+            <label htmlFor="email">Email: </label>
+            <input type="email" name="email" id="email" required />
+            <label htmlFor="password">Password: </label>
+            <input type="password" name="password" id="password" required />
+          </fieldset>
+        </form>
       </>
     );
   }

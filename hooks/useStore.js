@@ -4,7 +4,7 @@ import { immer } from "zustand/middleware/immer";
 const config = (set) => {
   const initalState = {
     cartItems: [],
-    position: "Login",
+    position: "LandingPage",
     session: false,
     role: "guest",
     addToCart: (newItemObject) => {
