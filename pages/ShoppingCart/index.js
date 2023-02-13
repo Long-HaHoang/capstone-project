@@ -8,7 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 // Import styled components
-import * as Icon from "@/components/Icons";
+import SVGIcon from "@/components/Icons";
 
 // Import helper functions
 import { formatNumberToDeCurrency } from "@/helpers/formatNumberToCurrency";
@@ -32,7 +32,7 @@ export default function ShoppingCartPage() {
     <>
       <StyledTopInfoSection>
         <StyledCartBackLink href={"/"}>
-          <Icon.SmallArrowLeft />
+          <SVGIcon variant="arrowleft" width="25px" />
         </StyledCartBackLink>
         <StyledTopInfoSectionHeader>Shopping Cart</StyledTopInfoSectionHeader>
         <StyledCartContentMetric>

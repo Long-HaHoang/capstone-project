@@ -5,8 +5,6 @@ import useSWR from "swr";
 // Import internal resources
 import Link from "next/link";
 import Image from "next/image";
-import LoadingCube from "../LoadingCube";
-import { StyledImage } from "../StyledImage";
 
 export default function HeroSection() {
   const id = "e7628694-2371-4dbe-a5da-859e21dca690";

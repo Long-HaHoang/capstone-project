@@ -16,23 +16,27 @@ export default function Gallery() {
   }
 
   return (
-    <GallerySection>
-      <GalleryList>
+    <StyledGallerySection>
+      <StyledGalleryList>
         {isLoading ? (
           <>
             <LoadingCube />
           </>
         ) : (
           products.map((product) => {
-            return <ItemCard key={product.id} product={product} />;
+            return (
+              <StyledGalleryListItem key={product.id}>
+                <ItemCard product={product} />
+              </StyledGalleryListItem>
+            );
           })
         )}
-      </GalleryList>
-    </GallerySection>
+      </StyledGalleryList>
+    </StyledGallerySection>
   );
 }
 
-const GallerySection = styled.section`
+const StyledGallerySection = styled.section`
   border: solid green;
   width: 100%;
   display: flex;
@@ -40,7 +44,7 @@ const GallerySection = styled.section`
   place-items: center;
 `;
 
-const GalleryList = styled.ul`
+const StyledGalleryList = styled.ul`
   border: solid blue;
   width: 100%;
   display: flex;
@@ -50,4 +54,10 @@ const GalleryList = styled.ul`
   gap: 10px;
   margin: 0;
   padding: 0;
+`;
+
+const StyledGalleryListItem = styled.li`
+  border: solid lightcoral;
+  width: 100%;
+  padding: 10px;
 `;

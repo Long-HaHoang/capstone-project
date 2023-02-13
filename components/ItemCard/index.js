@@ -9,7 +9,7 @@ import useStore from "@/hooks/useStore";
 import Image from "next/image";
 
 // Import of SVG Icon Components
-import * as Icon from "@/components/Icons";
+import SVGIcon from "../Icons";
 
 export default function ItemCard({ product }) {
   const [cartItems, addToCart, updateCartItems] = useStore((state) => [
@@ -55,17 +55,11 @@ export default function ItemCard({ product }) {
   }
 
   return (
-    <li>
+    <>
       <StyledArticleCard>
-        <Link href={`/Details/${product.id}`}>
-          <StyledThumbnail
-            src={product.thumbnail}
-            alt="no img"
-            width={120}
-            height={150}
-            priority
-          />
-        </Link>
+        <StyledImageContainer href={`/Details/${product.id}`}>
+          <StyledThumbnail src={product.thumbnail} alt="no img" fill priority />
+        </StyledImageContainer>
         <StyledCardInformationWrapper>
           <StyledProductHeaderLink href={`/Details/${product.id}`}>
             <StyledProductTitle>{product.title}</StyledProductTitle>
@@ -80,7 +74,7 @@ export default function ItemCard({ product }) {
                 }
               }}
             >
-              <Icon.SmallMinus />
+              <SVGIcon variant="minus" width="25px" />
             </StyledCounterButton>
             <p>{countState.count}</p>
             <StyledCounterButton
@@ -91,34 +85,43 @@ export default function ItemCard({ product }) {
                 }
               }}
             >
-              <Icon.SmallPlus />
+              <SVGIcon variant="plus" width="25px" />
             </StyledCounterButton>
 
             <StyledCartButton type="button" onClick={handleCartItem}>
-              <Icon.SmallCart />
+              <SVGIcon variant="cart" width="25px" />
             </StyledCartButton>
           </StyledCounterContainer>
         </StyledCardInformationWrapper>
       </StyledArticleCard>
-    </li>
+    </>
   );
 }
 
 const StyledArticleCard = styled.article`
   border: solid lightgray;
   border-radius: 16px;
-
-  height: fit-content;
-  width: 100%;
-
+  height: 30vh;
   display: grid;
-  grid-template-columns: 50% 50%;
-  place-items: center;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-areas:
+    "ProductImage ProductImage ProductImage ProductName ProductName ProductName"
+    "ProductImage ProductImage ProductImage ProductName ProductName ProductName"
+    "ProductImage ProductImage ProductImage ProductPrice ProductPrice ProductPrice"
+    "ProductImage ProductImage ProductImage Counter Counter Counter"
+    "ProductImage ProductImage ProductImage Cartbutton Cartbutton Cartbutton"
+    "ProductImage ProductImage ProductImage . . .";
+`;
+
+const StyledImageContainer = styled(Link)`
+  position: relative;
+  grid-area: ProductImage;
+  height: 100%;
+  width: 100%;
 `;
 
 const StyledThumbnail = styled(Image)`
-  border: #d3d3d350 solid;
-  border-radius: 8px;
   object-fit: cover;
 `;
 

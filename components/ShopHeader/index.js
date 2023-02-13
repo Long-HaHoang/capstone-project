@@ -6,7 +6,7 @@ import Link from "next/link";
 import useStore from "@/hooks/useStore";
 
 // Import of SVG Icon Component
-import { SmallCart } from "@/components/Icons";
+import SVGIcon from "../Icons";
 
 export default function ShopHeader() {
   const [cartItems] = useStore((state) => [state.cartItems]);
@@ -23,7 +23,7 @@ export default function ShopHeader() {
       </StyledShopHeaderLink>
 
       <StyledShoppingCartLink aria-label="Checkout link" href={"/ShoppingCart"}>
-        <SmallCart />
+        <SVGIcon variant="cart" width="25px" />
         {cartTotalAmount && (
           <StyledShoppingCartCounter>
             {cartTotalAmount}
@@ -49,6 +49,7 @@ const StyledShopHeader = styled.header`
 const StyledShopH1 = styled.h1`
   margin: 0;
   width: 80%;
+  color: white;
 `;
 
 const StyledShoppingCartLink = styled(Link)`
@@ -56,7 +57,7 @@ const StyledShoppingCartLink = styled(Link)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  color: inherit;
+  color: white;
   text-decoration: inherit;
 `;
 
