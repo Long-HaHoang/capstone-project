@@ -109,7 +109,7 @@ const StyledArticleCard = styled.article`
   border-radius: 16px;
 
   height: fit-content;
-  width: 97vw;
+  width: 100%;
 
   display: grid;
   grid-template-columns: 50% 50%;

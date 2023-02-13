@@ -36,22 +36,13 @@ export default function ShopHeader() {
 
 // Styled components
 const StyledShopHeader = styled.header`
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 3;
-
-  width: 100%;
+  grid-area: Header;
   height: 60px;
-  padding: 10px 25px;
-
   background-color: var(--secondary-color);
-  color: var(--primary-color);
-  border-bottom: solid lightgray;
-
+  padding: 10px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 `;
 
