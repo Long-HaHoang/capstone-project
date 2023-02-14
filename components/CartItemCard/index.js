@@ -52,9 +52,8 @@ const StyledCartItemArticle = styled.article`
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
   border-radius: 16px;
-  width: 80vw;
   padding: 10px;
-
+  width: 100%;
   display: grid;
   grid-template-columns: 50% 50%;
   place-items: center;

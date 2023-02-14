@@ -5,7 +5,6 @@ import styled from "styled-components";
 import CartItemCard from "@/components/CartItemCard";
 import useStore from "@/hooks/useStore";
 import Link from "next/link";
-import Image from "next/image";
 
 // Import styled components
 import SVGIcon from "@/components/Icons";
@@ -29,7 +28,7 @@ export default function ShoppingCartPage() {
   const shippingCost = 4.99;
 
   return (
-    <>
+    <CartWrapper>
       <StyledTopInfoSection>
         <StyledCartBackLink href={"/"}>
           <SVGIcon variant="arrowleft" width="25px" />
@@ -40,19 +39,21 @@ export default function ShoppingCartPage() {
           <p>Value: {formatNumberToDeCurrency(priceOfAllCartItems)}</p>
         </StyledCartContentMetric>
       </StyledTopInfoSection>
+
       <StyledCartItemList>
         {cartItems.length === 0 ? (
           <li>No items added</li>
         ) : (
           cartItems.map((element) => {
             return (
-              <li key={element.id}>
+              <StyledCartListItem key={element.id}>
                 <CartItemCard cartItem={element} />
-              </li>
+              </StyledCartListItem>
             );
           })
         )}
       </StyledCartItemList>
+
       {cartItems.length !== 0 && (
         <StyledSummarySection>
           <StyledSummaryHeader>Summary</StyledSummaryHeader>
@@ -79,18 +80,34 @@ export default function ShoppingCartPage() {
           </StyledSummaryCard>
         </StyledSummarySection>
       )}
-    </>
+    </CartWrapper>
   );
 }
 
-const StyledCartItemList = styled.ul`
+const CartWrapper = styled.div`
+  height: 100%;
+  padding: 10px 0;
   display: flex;
   flex-direction: column;
-
-  list-style: none;
+  align-items: center;
+  justify-content: space-between;
   gap: 10px;
+`;
+
+const StyledCartItemList = styled.ul`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  gap: 15px;
   margin: 0;
   padding: 0;
+`;
+
+const StyledCartListItem = styled.li`
+  width: clamp(15rem, 100%, 25rem);
 `;
 
 const StyledTopInfoSection = styled.section`
@@ -104,18 +121,13 @@ const StyledTopInfoSection = styled.section`
   align-items: center;
 `;
 
-const StyledWrapperLinkHeader = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: 10% 90%;
-  place-items: center;
-`;
-
 const StyledCartBackLink = styled(Link)`
   position: absolute;
-  bottom: 60px;
+  top: 1rem;
+  left: 1rem;
   width: fit-content;
   align-self: flex-start;
+  color: inherit;
 `;
 
 const StyledTopInfoSectionHeader = styled.h2`
@@ -146,7 +158,7 @@ const StyledSummaryHeader = styled.h2`
   color: darkgray;
   padding: 10px;
   margin: 0;
-  font-size: 20px;
+  font-size: 1.4rem;
 `;
 
 const StyledSummaryCard = styled.div`

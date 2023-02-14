@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import useStore from "@/hooks/useStore";
 import LoadingCube from "@/components/LoadingCube";
 import { StyledImage } from "@/components/StyledImage";
-import * as Icon from "@/components/Icons";
+import SVGIcon from "@/components/Icons";
 import { formatNumberToDeCurrency } from "@/helpers/formatNumberToCurrency";
 
 export default function DetailsPage() {
@@ -66,13 +66,13 @@ export default function DetailsPage() {
 
   return (
     <DetailsContainer>
-      <button type="button" onClick={() => router.back()}>
-        <Icon.SmallArrowLeft />
-      </button>
+      <StyledBackButton type="button" onClick={() => router.back()}>
+        <SVGIcon variant="arrowleft" width="25px" />
+      </StyledBackButton>
       <h2>{product.title}</h2>
       <p>{product.category}</p>
 
-      <ImageContainer>
+      <StyledImageContainer>
         <StyledImage
           src={product.images[0]}
           alt={`${product.title} image`}
@@ -82,16 +82,18 @@ export default function DetailsPage() {
               (max-width: 1200px) 50vw,
               33vw"
         />
-      </ImageContainer>
+      </StyledImageContainer>
 
-      <section>
+      <StyledDescriptionSection>
         <h3>Description</h3>
         <p>{product.description}</p>
-      </section>
+      </StyledDescriptionSection>
 
       <CounterContainer>
-        <p>{formatNumberToDeCurrency(product.price)}</p>
-        <CounterButton
+        <StyledProductPrice>
+          {formatNumberToDeCurrency(product.price)}
+        </StyledProductPrice>
+        <StyledCounterButton
           type="button"
           onClick={() => {
             if (countState.count > 0) {
@@ -99,10 +101,10 @@ export default function DetailsPage() {
             }
           }}
         >
-          <Icon.SmallMinus />
-        </CounterButton>
-        <p>{countState.count}</p>
-        <CounterButton
+          <SVGIcon variant="minus" width="25px" />
+        </StyledCounterButton>
+        <StyledCounterNumber>{countState.count}</StyledCounterNumber>
+        <StyledCounterButton
           type="button"
           onClick={() => {
             if (countState.count < 99) {
@@ -110,46 +112,73 @@ export default function DetailsPage() {
             }
           }}
         >
-          <Icon.SmallPlus />
-        </CounterButton>
+          <SVGIcon variant="plus" width="25px" />
+        </StyledCounterButton>
 
-        <CartButton type="button" onClick={handleCartItem}>
-          <Icon.SmallCart />
-        </CartButton>
+        <StyledCounterButton type="button" onClick={handleCartItem}>
+          <SVGIcon variant="cart" width="25px" />
+        </StyledCounterButton>
       </CounterContainer>
     </DetailsContainer>
   );
 }
 
-const ImageContainer = styled.div`
-  position: relative;
-  width: 100%;
-  height: 110px;
-`;
-
 const DetailsContainer = styled.div`
+  height: 100%;
+  border: solid red;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: space-between;
+  gap: 15px;
   padding: 10px;
-  width: 100%;
-  height: 100vh;
+
   margin: 0;
 `;
 
-const CounterButton = styled.button`
+const StyledBackButton = styled.div`
+  border: none;
+  background-color: none;
+  cursor: pointer;
+`;
+
+const StyledImageContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 12rem;
+`;
+
+const StyledDescriptionSection = styled.section`
+  width: 80%;
+  align-self: center;
+`;
+
+const StyledCounterButton = styled.button`
+  min-width: 42px;
+  min-height: 42px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2b2b2b;
+  color: var(--primary-color);
+  align-self: center;
+  justify-self: center;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
-  height: 28px;
-  aspect-ratio: 1;
+  cursor: pointer;
+  &:active {
+    transform: scale(0.9);
+  }
 `;
 
-const CartButton = styled(CounterButton)`
-  height: 35px;
+const StyledProductPrice = styled.p`
+  font-size: 1.3rem;
+`;
+
+const StyledCounterNumber = styled.p`
+  font-size: large;
+  font-weight: 550;
 `;
 
 const CounterContainer = styled.div`
@@ -160,8 +189,10 @@ const CounterContainer = styled.div`
   align-items: center;
   gap: 15px;
 
-  width: 80%;
-  height: 50px;
-  background-color: lightgray;
+  padding: 10px;
+
+  width: 90%;
+  height: 10%;
+  box-shadow: rgba(99, 99, 99, 0.28) 0px 2px 8px 0px;
   border-radius: 8px;
 `;
