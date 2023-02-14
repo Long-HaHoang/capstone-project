@@ -28,7 +28,6 @@ export default function Layout({ children }) {
 const StyledAppContainer = styled.div`
   clear: both;
 
-  height: 100%;
   width: ${(props) => `${props.width}px`};
   display: grid;
   grid-template-columns: 1fr;
@@ -49,16 +48,8 @@ const StyledAppContainer = styled.div`
 
 const StyledMainContent = styled.main`
   position: relative;
-
   grid-area: Main;
-  height: 100%;
   min-height: ${(props) => `${props.height - 120}px`};
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
 `;
 
 const StyledAsideLeft = styled.aside`
@@ -75,7 +66,6 @@ const StyledFooter = styled.footer`
   background-color: #1a1a1a;
   padding: 10px;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
 `;

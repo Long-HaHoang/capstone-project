@@ -49,7 +49,8 @@ const StyledThumbnail = styled(Image)`
 `;
 
 const StyledCartItemArticle = styled.article`
-  border: solid #d3d3d350;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
   border-radius: 16px;
   width: 80vw;
   padding: 10px;
@@ -92,6 +93,9 @@ const StyledCartItemDeleteButton = styled.button`
   border-radius: 5px;
   color: #f84a4a;
   background-color: var(--primary-color);
+  &:active {
+    transform: scale(0.9);
+  }
 `;
 
 const StyledShoppingCartLink = styled(Link)`

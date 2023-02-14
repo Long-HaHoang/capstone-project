@@ -113,12 +113,8 @@ export default function ItemCard({ product }) {
 }
 
 const StyledArticleCard = styled.article`
-  box-shadow: 12px 11px 29px -8px rgba(69, 69, 69, 0.39),
-    -23px -18px 34px -28px rgba(45, 45, 45, 0.49);
-  -webkit-box-shadow: 12px 11px 29px -8px rgba(69, 69, 69, 0.39),
-    -23px -18px 34px -28px rgba(45, 45, 45, 0.49);
-  -moz-box-shadow: 12px 11px 29px -8px rgba(69, 69, 69, 0.39),
-    -23px -18px 34px -28px rgba(45, 45, 45, 0.49);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
   border-radius: 16px;
   height: 30vh;
   padding: 10px;
@@ -138,6 +134,8 @@ const StyledArticleCard = styled.article`
 const StyledImageContainer = styled(Link)`
   position: relative;
   grid-area: ProductImage;
+  border-radius: 12px;
+  overflow: hidden;
   height: 100%;
   width: 100%;
 `;
@@ -205,6 +203,9 @@ const StyledCounterButton = styled.button`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  &:active {
+    transform: scale(0.9);
+  }
 `;
 
 const StyledCartButton = styled(StyledCounterButton)`

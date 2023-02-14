@@ -16,7 +16,7 @@ export default function Gallery() {
   }
 
   return (
-    <StyledGallerySection>
+    <section>
       <StyledGalleryList>
         {isLoading ? (
           <>
@@ -32,29 +32,27 @@ export default function Gallery() {
           })
         )}
       </StyledGalleryList>
-    </StyledGallerySection>
+    </section>
   );
 }
 
-const StyledGallerySection = styled.section`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  place-items: center;
-`;
-
 const StyledGalleryList = styled.ul`
-  width: 100%;
+  border: solid red;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   list-style: none;
   gap: 10px;
-  margin: 0;
   padding: 0;
+
+  li:last-child {
+    border: solid green;
+  }
 `;
 
 const StyledGalleryListItem = styled.li`
-  width: 100%;
+  border: solid blue;
+  width: clamp(20rem, 30vw, 70rem);
   padding: 10px;
 `;
