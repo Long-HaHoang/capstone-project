@@ -70,7 +70,9 @@ export default function ItemCard({ product }) {
         </StyledImageContainer>
 
         <StyledProductHeaderLink href={`/Details/${product.id}`}>
-          <StyledProductTitle>{product.title}</StyledProductTitle>
+          <StyledProductTitle title={product.title}>
+            {product.title.slice(0, 20)}
+          </StyledProductTitle>
         </StyledProductHeaderLink>
         <StyledProductPrice>
           {formatNumberToDeCurrency(product.price)}
@@ -116,14 +118,14 @@ const StyledArticleCard = styled.article`
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
   border-radius: 16px;
-  height: 30vh;
+  height: 16rem;
   padding: 10px;
   display: grid;
   grid-gap: 10px 10px;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(6, 1fr);
   grid-template-areas:
-    "ProductImage ProductImage ProductImage ProductName ProductName ProductName"
+    "ProductName ProductName ProductName ProductName ProductName ProductName"
     "ProductImage ProductImage ProductImage . . ."
     "ProductImage ProductImage ProductImage ProductPrice ProductPrice ProductPrice"
     "ProductImage ProductImage ProductImage Counter Counter Counter"
@@ -153,25 +155,18 @@ const StyledProductHeaderLink = styled(Link)`
 `;
 
 const StyledProductTitle = styled.h2`
-  width: 100%;
-  height: 100%;
   text-align: center;
-  font-size: 1.3rem;
-  overflow: hidden;
-  white-space: nowrap;
+  font-size: 1.5rem;
 `;
 
 const StyledProductPrice = styled.p`
+  font-size: 1.3rem;
+
   grid-area: ProductPrice;
-  width: 100%;
-  margin: 0;
-  align-self: end;
-  justify-self: center;
-  text-align: center;
+  justify-self: end;
 `;
 
 const StyledCounterContainer = styled.div`
-  width: 100%;
   display: grid;
   grid-area: Counter;
   align-self: center;
@@ -183,14 +178,16 @@ const StyledCounterContainer = styled.div`
 `;
 
 const StyledCounterNumber = styled.p`
+  font-size: large;
+  font-weight: 550;
   grid-area: CounterNumber;
   align-self: center;
   justify-self: center;
 `;
 
 const StyledCounterButton = styled.button`
-  width: 40px;
-  height: 40px;
+  min-width: 42px;
+  min-height: 42px;
   border: none;
   border-radius: 5px;
   background-color: #2b2b2b;

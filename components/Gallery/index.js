@@ -37,7 +37,6 @@ export default function Gallery() {
 }
 
 const StyledGalleryList = styled.ul`
-  border: solid red;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -45,14 +44,9 @@ const StyledGalleryList = styled.ul`
   list-style: none;
   gap: 10px;
   padding: 0;
-
-  li:last-child {
-    border: solid green;
-  }
 `;
 
 const StyledGalleryListItem = styled.li`
-  border: solid blue;
-  width: clamp(20rem, 30vw, 70rem);
+  width: clamp(20rem, 40vw, 70rem);
   padding: 10px;
 `;
