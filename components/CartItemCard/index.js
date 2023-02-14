@@ -49,7 +49,7 @@ const StyledThumbnail = styled(Image)`
 `;
 
 const StyledCartItemArticle = styled.article`
-  border: solid lightgray;
+  border: solid #d3d3d350;
   border-radius: 16px;
   width: 80vw;
   padding: 10px;
@@ -86,6 +86,12 @@ const StyledCartItemParagraph = styled.p`
 
 const StyledCartItemDeleteButton = styled.button`
   align-self: flex-end;
+  cursor: pointer;
+  border: 1px solid #f84a4a;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  color: #f84a4a;
+  background-color: var(--primary-color);
 `;
 
 const StyledShoppingCartLink = styled(Link)`
