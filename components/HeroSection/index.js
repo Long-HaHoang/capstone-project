@@ -76,7 +76,7 @@ const HeroLeftSide = styled(HeroRightSide)`
 const HeroFakebutton = styled.div`
   height: 50px;
   width: 90px;
-  background-color: #8193a0;
+  background-color: #2b2b2b;
   color: var(--primary-color);
   border-radius: 5px;
 
