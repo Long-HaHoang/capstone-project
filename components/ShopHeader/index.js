@@ -39,7 +39,7 @@ const StyledShopHeader = styled.header`
   grid-area: Header;
   height: 60px;
   background-color: #1a1a1a;
-  padding: 10px;
+  padding: 10px 10%;
   display: flex;
   flex-direction: row;
   justify-content: center;

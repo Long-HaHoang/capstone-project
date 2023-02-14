@@ -1,12 +1,10 @@
 // Import external resources
 import { SWRConfig } from "swr";
-import { useImmer } from "use-immer";
 
 // Import internal resources
 import GlobalStyle from "@/styles";
 import Head from "next/head";
 import Layout from "@/components/Layout";
-import useStore from "@/hooks/useStore";
 
 export default function App({ Component, pageProps }) {
   return (

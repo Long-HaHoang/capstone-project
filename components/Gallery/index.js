@@ -47,6 +47,6 @@ const StyledGalleryList = styled.ul`
 `;
 
 const StyledGalleryListItem = styled.li`
-  width: clamp(20rem, 40vw, 70rem);
+  width: clamp(15rem, 35vw, 25rem);
   padding: 10px;
 `;
