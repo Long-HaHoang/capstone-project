@@ -77,7 +77,7 @@ const HeroFakebutton = styled.div`
   height: 50px;
   width: 90px;
   background-color: #8193a0;
-  color: #f9f3ee;
+  color: var(--primary-color);
   border-radius: 5px;
 
   padding: 3px;

@@ -154,6 +154,15 @@ const StyledProductHeaderLink = styled(Link)`
   text-decoration: none;
 `;
 
+const StyledProductTitle = styled.h2`
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 1.3rem;
+  overflow: hidden;
+  white-space: nowrap;
+`;
+
 const StyledProductPrice = styled.p`
   grid-area: ProductPrice;
   width: 100%;
@@ -179,15 +188,6 @@ const StyledCounterNumber = styled.p`
   grid-area: CounterNumber;
   align-self: center;
   justify-self: center;
-`;
-
-const StyledProductTitle = styled.h2`
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  font-size: 1.3rem;
-  overflow: scroll;
-  white-space: nowrap;
 `;
 
 const StyledCounterButton = styled.button`

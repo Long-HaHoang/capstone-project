@@ -20,7 +20,7 @@ const prettierStyles = css`
   body {
     --primary-color: #fcfcfc;
     --secondary-color: #0c0c0c;
-
+    overflow-x: hidden;
     font-family: Roboto, sans-serif;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
