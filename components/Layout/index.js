@@ -15,7 +15,7 @@ export default function Layout({ children }) {
     <StyledAppContainer height={size.height} width={size.width}>
       <ShopHeader />
       {size.width > 1440 && <StyledAsideLeft></StyledAsideLeft>}
-      <StyledMainContent>{children}</StyledMainContent>
+      <StyledMainContent height={size.height}>{children}</StyledMainContent>
       {size.width > 1440 && <StyledAsideRight></StyledAsideRight>}
       <StyledFooter>
         <StyledCopy>&copy; 2023 by long ha hoang</StyledCopy>
@@ -27,7 +27,7 @@ export default function Layout({ children }) {
 // Styled componentsd
 const StyledAppContainer = styled.div`
   clear: both;
-  border: solid gold;
+
   height: 100%;
   width: ${(props) => `${props.width}px`};
   display: grid;
@@ -49,14 +49,15 @@ const StyledAppContainer = styled.div`
 
 const StyledMainContent = styled.main`
   position: relative;
-  border: solid red;
+
   grid-area: Main;
   height: 100%;
+  min-height: ${(props) => `${props.height - 120}px`};
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
 `;
 
@@ -71,7 +72,7 @@ const StyledAsideRight = styled.aside`
 const StyledFooter = styled.footer`
   height: 60px;
   grid-area: Footer;
-  background-color: var(--secondary-color);
+  background-color: #1a1a1a;
   padding: 10px;
   display: flex;
   flex-direction: row;

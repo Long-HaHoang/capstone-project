@@ -37,7 +37,6 @@ export default function Gallery() {
 }
 
 const StyledGallerySection = styled.section`
-  border: solid green;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -45,7 +44,6 @@ const StyledGallerySection = styled.section`
 `;
 
 const StyledGalleryList = styled.ul`
-  border: solid blue;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -57,7 +55,6 @@ const StyledGalleryList = styled.ul`
 `;
 
 const StyledGalleryListItem = styled.li`
-  border: solid lightcoral;
   width: 100%;
   padding: 10px;
 `;

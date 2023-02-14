@@ -38,7 +38,7 @@ export default function ShopHeader() {
 const StyledShopHeader = styled.header`
   grid-area: Header;
   height: 60px;
-  background-color: var(--secondary-color);
+  background-color: #1a1a1a;
   padding: 10px;
   display: flex;
   flex-direction: row;
@@ -47,9 +47,8 @@ const StyledShopHeader = styled.header`
 `;
 
 const StyledShopH1 = styled.h1`
-  margin: 0;
   width: 80%;
-  color: white;
+  color: var(--primary-color);
 `;
 
 const StyledShoppingCartLink = styled(Link)`
@@ -57,7 +56,7 @@ const StyledShoppingCartLink = styled(Link)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  color: white;
+  color: var(--primary-color);
   text-decoration: inherit;
 `;
 

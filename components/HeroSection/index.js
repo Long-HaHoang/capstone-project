@@ -25,7 +25,14 @@ export default function HeroSection() {
           </HeroLeftSide>
 
           <HeroRightSide>
-            <HeroImage src={product.images[2]} alt={product.title} fill />
+            <HeroImage
+              src={product.images[2]}
+              alt={product.title}
+              fill
+              sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+            />
           </HeroRightSide>
         </HeroLink>
       </HeroWrapper>
@@ -69,7 +76,8 @@ const HeroLeftSide = styled(HeroRightSide)`
 const HeroFakebutton = styled.div`
   height: 50px;
   width: 90px;
-  background-color: lightgray;
+  background-color: #8193a0;
+  color: #f9f3ee;
   border-radius: 5px;
 
   padding: 3px;
