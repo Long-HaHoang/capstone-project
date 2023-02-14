@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="Long Ha Hoang simple capstone project. 
+          content="Long Ha Hoang's simple capstone project. 
           A small shopfront to buy products. It fetches products from a MongoDB and renders the content. 
           Made with next.js
           Tech used in this project.
