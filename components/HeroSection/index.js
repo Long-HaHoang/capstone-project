@@ -5,8 +5,6 @@ import useSWR from "swr";
 // Import internal resources
 import Link from "next/link";
 import Image from "next/image";
-import LoadingCube from "../LoadingCube";
-import { StyledImage } from "../StyledImage";
 
 export default function HeroSection() {
   const id = "e7628694-2371-4dbe-a5da-859e21dca690";
@@ -27,7 +25,14 @@ export default function HeroSection() {
           </HeroLeftSide>
 
           <HeroRightSide>
-            <HeroImage src={product.images[2]} alt={product.title} fill />
+            <HeroImage
+              src={product.images[2]}
+              alt={product.title}
+              fill
+              sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+            />
           </HeroRightSide>
         </HeroLink>
       </HeroWrapper>
@@ -37,8 +42,7 @@ export default function HeroSection() {
 
 const HeroWrapper = styled.div`
   height: 25vh;
-  width: 100vw;
-  margin-top: -20px;
+  width: 100%;
   background-color: white;
   border-bottom: solid lightgray;
 `;
@@ -72,7 +76,8 @@ const HeroLeftSide = styled(HeroRightSide)`
 const HeroFakebutton = styled.div`
   height: 50px;
   width: 90px;
-  background-color: lightgray;
+  background-color: #2b2b2b;
+  color: var(--primary-color);
   border-radius: 5px;
 
   padding: 3px;

@@ -6,7 +6,7 @@ import Link from "next/link";
 import useStore from "@/hooks/useStore";
 
 // Import of SVG Icon Component
-import { SmallCart } from "@/components/Icons";
+import SVGIcon from "../Icons";
 
 export default function ShopHeader() {
   const [cartItems] = useStore((state) => [state.cartItems]);
@@ -23,7 +23,7 @@ export default function ShopHeader() {
       </StyledShopHeaderLink>
 
       <StyledShoppingCartLink aria-label="Checkout link" href={"/ShoppingCart"}>
-        <SmallCart />
+        <SVGIcon variant="cart" width="25px" />
         {cartTotalAmount && (
           <StyledShoppingCartCounter>
             {cartTotalAmount}
@@ -36,28 +36,19 @@ export default function ShopHeader() {
 
 // Styled components
 const StyledShopHeader = styled.header`
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 3;
-
-  width: 100%;
+  grid-area: Header;
   height: 60px;
-  padding: 10px 25px;
-
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  border-bottom: solid lightgray;
-
+  background-color: #1a1a1a;
+  padding: 10px 10%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 `;
 
 const StyledShopH1 = styled.h1`
-  margin: 0;
   width: 80%;
+  color: var(--primary-color);
 `;
 
 const StyledShoppingCartLink = styled(Link)`
@@ -65,7 +56,7 @@ const StyledShoppingCartLink = styled(Link)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  color: inherit;
+  color: var(--primary-color);
   text-decoration: inherit;
 `;
 

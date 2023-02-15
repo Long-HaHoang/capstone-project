@@ -6,12 +6,10 @@ import { useImmerReducer } from "use-immer";
 import { formatNumberToDeCurrency } from "@/helpers/formatNumberToCurrency";
 import Link from "next/link";
 import useStore from "@/hooks/useStore";
-
-// Import of styled components
-import * as Styled from "@/components/ItemCard/ItemCard.styled.js";
+import Image from "next/image";
 
 // Import of SVG Icon Components
-import * as Icon from "@/components/Icons";
+import SVGIcon from "../Icons";
 
 export default function ItemCard({ product }) {
   const [cartItems, addToCart, updateCartItems] = useStore((state) => [
@@ -57,51 +55,159 @@ export default function ItemCard({ product }) {
   }
 
   return (
-    <li>
-      <Styled.ArticleCard>
-        <Link href={`/Details/${product.id}`}>
-          <Styled.Thumbnail
+    <>
+      <StyledArticleCard>
+        <StyledImageContainer href={`/Details/${product.id}`}>
+          <StyledThumbnail
             src={product.thumbnail}
             alt="no img"
-            width={120}
-            height={150}
+            fill
+            sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
             priority
           />
-        </Link>
-        <Styled.CardInformationWrapper>
-          <Styled.ProductHeaderLink href={`/Details/${product.id}`}>
-            <Styled.ProductTitle>{product.title}</Styled.ProductTitle>
-          </Styled.ProductHeaderLink>
-          <p>{formatNumberToDeCurrency(product.price)}</p>
-          <Styled.CounterContainer>
-            <Styled.CounterButton
-              type="button"
-              onClick={() => {
-                if (countState.count > 0) {
-                  return dispatch({ type: "decrement" });
-                }
-              }}
-            >
-              <Icon.SmallMinus />
-            </Styled.CounterButton>
-            <p>{countState.count}</p>
-            <Styled.CounterButton
-              type="button"
-              onClick={() => {
-                if (countState.count < 99) {
-                  return dispatch({ type: "increment" });
-                }
-              }}
-            >
-              <Icon.SmallPlus />
-            </Styled.CounterButton>
+        </StyledImageContainer>
 
-            <Styled.CartButton type="button" onClick={handleCartItem}>
-              <Icon.SmallCart />
-            </Styled.CartButton>
-          </Styled.CounterContainer>
-        </Styled.CardInformationWrapper>
-      </Styled.ArticleCard>
-    </li>
+        <StyledProductHeaderLink href={`/Details/${product.id}`}>
+          <StyledProductTitle title={product.title}>
+            {product.title.slice(0, 20)}
+          </StyledProductTitle>
+        </StyledProductHeaderLink>
+        <StyledProductPrice>
+          {formatNumberToDeCurrency(product.price)}
+        </StyledProductPrice>
+        <StyledCounterContainer>
+          <StyledCounterButton
+            type="button"
+            variant="Minus"
+            onClick={() => {
+              if (countState.count > 0) {
+                return dispatch({ type: "decrement" });
+              }
+            }}
+          >
+            <SVGIcon variant="minus" width="25px" />
+          </StyledCounterButton>
+          <StyledCounterNumber>{countState.count}</StyledCounterNumber>
+          <StyledCounterButton
+            type="button"
+            variant="Plus"
+            onClick={() => {
+              if (countState.count < 99) {
+                return dispatch({ type: "increment" });
+              }
+            }}
+          >
+            <SVGIcon variant="plus" width="25px" />
+          </StyledCounterButton>
+        </StyledCounterContainer>
+        <StyledCartButton
+          type="button"
+          variant="Cartbutton"
+          onClick={handleCartItem}
+        >
+          <SVGIcon variant="cart" width="25px" />
+        </StyledCartButton>
+      </StyledArticleCard>
+    </>
   );
 }
+
+const StyledArticleCard = styled.article`
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+  border-radius: 16px;
+  height: 16rem;
+  padding: 10px;
+  display: grid;
+  grid-gap: 10px 10px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-areas:
+    "ProductName ProductName ProductName ProductName ProductName ProductName"
+    "ProductImage ProductImage ProductImage . . ."
+    "ProductImage ProductImage ProductImage ProductPrice ProductPrice ProductPrice"
+    "ProductImage ProductImage ProductImage Counter Counter Counter"
+    "ProductImage ProductImage ProductImage Counter Counter Counter"
+    "ProductImage ProductImage ProductImage Cartbutton Cartbutton Cartbutton";
+`;
+
+const StyledImageContainer = styled(Link)`
+  position: relative;
+  grid-area: ProductImage;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+`;
+
+const StyledThumbnail = styled(Image)`
+  object-fit: cover;
+`;
+
+const StyledProductHeaderLink = styled(Link)`
+  grid-area: ProductName;
+  align-self: stretch;
+  justify-self: stretch;
+  color: inherit;
+  text-decoration: none;
+`;
+
+const StyledProductTitle = styled.h2`
+  text-align: center;
+  font-size: 1.5rem;
+`;
+
+const StyledProductPrice = styled.p`
+  font-size: 1.3rem;
+
+  grid-area: ProductPrice;
+  justify-self: end;
+`;
+
+const StyledCounterContainer = styled.div`
+  display: grid;
+  grid-area: Counter;
+  align-self: center;
+  justify-self: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "Minus CounterNumber Plus";
+`;
+
+const StyledCounterNumber = styled.p`
+  font-size: large;
+  font-weight: 550;
+  grid-area: CounterNumber;
+  align-self: center;
+  justify-self: center;
+`;
+
+const StyledCounterButton = styled.button`
+  min-width: 42px;
+  min-height: 42px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2b2b2b;
+  color: var(--primary-color);
+  grid-area: ${(props) => props.variant};
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  &:active {
+    transform: scale(0.9);
+  }
+`;
+
+const StyledCartButton = styled(StyledCounterButton)`
+  width: 90%;
+  height: 100%;
+  border: none;
+  border-radius: 16px;
+`;
