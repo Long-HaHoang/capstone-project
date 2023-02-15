@@ -125,7 +125,6 @@ export default function DetailsPage() {
 
 const DetailsContainer = styled.div`
   height: 100%;
-  border: solid red;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
