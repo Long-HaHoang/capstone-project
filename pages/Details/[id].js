@@ -26,7 +26,13 @@ export default function DetailsPage() {
     state.updateCartItems,
   ]);
 
-  if (!isReady || isLoading) return <LoadingCube />;
+  if (!isReady || isLoading)
+    return (
+      <StyledLoading>
+        <LoadingCube />
+      </StyledLoading>
+    );
+
   if (error) {
     return <h2>Seems like this product is not avaiable!</h2>;
   }
@@ -122,6 +128,11 @@ export default function DetailsPage() {
     </DetailsContainer>
   );
 }
+
+const StyledLoading = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 const DetailsContainer = styled.div`
   height: 100%;
