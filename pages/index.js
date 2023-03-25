@@ -6,9 +6,6 @@ import HeroSection from "@/components/HeroSection";
 export default function HomePage() {
   return (
     <>
-      <StyledSearchBar>
-        <input type="text" placeholder="Search item..." />
-      </StyledSearchBar>
       <HeroSection />
       <Gallery />
     </>
