@@ -1,5 +1,4 @@
-import mongoose, { model, models, mongo, Schema } from "mongoose";
-import crypto from "crypto";
+import mongoose, { model, models, Schema } from "mongoose";
 
 const URI = `mongodb+srv://longha:${process.env.MONGODB_PASSWORD}@cluster0.oe4imt0.mongodb.net/capstone?retryWrites=true&w=majority`;
 
